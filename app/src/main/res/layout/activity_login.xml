@@ -6,7 +6,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/login"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -72,8 +71,6 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold"
-
-
 
             />
 
