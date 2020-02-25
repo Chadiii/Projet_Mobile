@@ -2,18 +2,27 @@ package com.example.projetmobile.model;
 
 public class Users {
 
-    private String email, login, nom, prenom, password;
+    private String email, login, nom, prenom, password, type;
 
     public Users(){
 
     }
 
-    public Users(String email, String login, String nom, String prenom, String password) {
+    public Users(String email, String login, String nom, String prenom, String password, String type) {
         this.email = email;
         this.login = login;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getEmail() {
