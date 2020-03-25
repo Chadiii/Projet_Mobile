@@ -1,11 +1,21 @@
 package com.example.projetmobile.model;
 
-public class Users {
+import java.io.Serializable;
 
-    private String email, login, nom, prenom, password, type;
+public class Users implements Serializable {
+    private static Users currentUser;
+
+    private String email, login, nom, prenom, password, type, telephone;
 
     public Users(){
 
+    }
+
+    public Users(String email, String nom, String prenom, String telephone){
+        this.email = email;
+        this.telephone = telephone;
+        this.nom = nom;
+        this.prenom = prenom;
     }
 
     public Users(String email, String login, String nom, String prenom, String password, String type) {
@@ -15,6 +25,14 @@ public class Users {
         this.prenom = prenom;
         this.password = password;
         this.type = type;
+    }
+
+    static public Users getCurrentUser() {
+        return currentUser;
+    }
+
+    static public void setCurrentUser(Users currentUser) {
+        Users.currentUser = currentUser;
     }
 
     public String getType() {
@@ -63,5 +81,8 @@ public class Users {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+    public String displayName(){
+        return this.getPrenom()+" "+this.getNom();
     }
 }

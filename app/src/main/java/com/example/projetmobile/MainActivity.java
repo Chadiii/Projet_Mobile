@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.projetmobile.activity.authentication.LoginActivity;
+import com.example.projetmobile.activity.authentication.RegisterActivity;
 
 public class MainActivity extends AppCompatActivity {
 
