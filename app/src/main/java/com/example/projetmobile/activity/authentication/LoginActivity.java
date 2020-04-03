@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ////////////////////////////////////////// for test
         //email = "test@iwim.com"; password = "testtest";
-        email = "arnaud@iwim.com"; password = "123456";
+        //email = "arnaud@iwim.com"; password = "123456";
         /////////////////////////////////////////
 
         if(TextUtils.isEmpty(password)){
