@@ -14,7 +14,16 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="detail">Veuillez renseigner les champs suivants afin de créer une scéance:</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="Week">
+        <item> Lundi</item>
+        <item> Mardi </item>
+        <item> Mercredi </item>
+        <item> Jeudi</item>
+        <item> Vendredi</item>
+        <item> Samedi </item>
+    </string-array>
 </resources>

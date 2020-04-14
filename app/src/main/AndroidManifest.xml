@@ -22,6 +22,12 @@
         <activity android:name=".activity.authentication.HomeActivity" />
         <activity android:name=".activity.authentication.RegisterActivity" />
         <activity android:name=".activity.authentication.LoginActivity" />
+        <activity android:name=".activity.emploi.ConsultCreateActivity" />
+        <activity android:name=".activity.emploi.DayDetailActivity" />
+        <activity android:name=".activity.emploi.WeekActivity" />
+        <activity android:name=".activity.emploi.YearActivity" />
+        <activity android:name=".activity.emploi.SecondweekActivity" />
+        <activity android:name=".activity.emploi.DetaildayconsultActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

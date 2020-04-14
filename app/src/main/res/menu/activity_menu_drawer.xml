@@ -17,6 +17,10 @@
                 android:icon="@drawable/ic_event_black_24dp"
                 android:title="Evènements" />
             <item
+                android:id="@+id/nav_timetable"
+                android:icon="@drawable/ic_view_agenda_black_24dp"
+                android:title="Emploi du temps" />
+            <item
                 android:id="@+id/nav_cours"
                 android:icon="@drawable/ic_view_agenda_black_24dp"
                 android:title="Cours" />
@@ -37,6 +41,7 @@
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"
                 android:title="Se déconnecter" />
+
         </menu>
     </item>
 

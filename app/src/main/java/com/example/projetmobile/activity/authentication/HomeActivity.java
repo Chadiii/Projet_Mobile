@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
 import com.example.projetmobile.activity.pedagogie.Cours;
@@ -75,6 +76,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_event :
                 this.showEventPage();
                 break;
+            case R.id.nav_timetable :
+                this.showEmploiPage();
+                break;
             case R.id.nav_cours :
                 this.showCoursPage();
                 break;
@@ -98,6 +102,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
+
+
 
     // ---------------------
     // CONFIGURATION
@@ -132,6 +138,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void showHomeFragment(){
         if (this.welcomeFragment == null) this.welcomeFragment = WelcomeFragment.newInstance();
         this.startTransactionFragment(this.welcomeFragment);
+    }
+    private void showEmploiPage() {
+        Intent intent = new Intent(getApplicationContext(), YearActivity.class);
+        startActivity(intent);
+        this.navigationView.getMenu().getItem(0).setChecked(true);
     }
     private void showMessageriePage(){
         Intent intent = new Intent(getApplicationContext(), MessagerieHome.class);
