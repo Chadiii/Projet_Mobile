@@ -18,7 +18,7 @@
                 android:title="Evènements" />
             <item
                 android:id="@+id/nav_timetable"
-                android:icon="@drawable/ic_view_agenda_black_24dp"
+                android:icon="@drawable/ic_dashboard_black_24dp"
                 android:title="Emploi du temps" />
             <item
                 android:id="@+id/nav_cours"
