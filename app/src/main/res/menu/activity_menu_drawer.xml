@@ -21,6 +21,12 @@
                 android:icon="@drawable/ic_dashboard_black_24dp"
                 android:title="Emploi du temps" />
             <item
+                android:id="@+id/nav_plandeformation"
+                android:icon="@drawable/ic_email_black_24dp"
+                android:title="Plan De Formation" />
+
+
+            <item
                 android:id="@+id/nav_cours"
                 android:icon="@drawable/ic_view_agenda_black_24dp"
                 android:title="Cours" />

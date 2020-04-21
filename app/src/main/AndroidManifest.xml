@@ -28,6 +28,8 @@
         <activity android:name=".activity.emploi.YearActivity" />
         <activity android:name=".activity.emploi.SecondweekActivity" />
         <activity android:name=".activity.emploi.DetaildayconsultActivity" />
+        <activity android:name=".activity.PlanDeFormation.MainActivity1" />
+        <activity android:name=".activity.PlanDeFormation.ProductsActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

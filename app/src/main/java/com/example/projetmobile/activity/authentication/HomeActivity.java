@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.PlanDeFormation.MainActivity1;
 import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
@@ -78,6 +79,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_timetable :
                 this.showEmploiPage();
+                break;
+            case R.id.nav_plandeformation :
+                this.showPlandeformation();
                 break;
             case R.id.nav_cours :
                 this.showCoursPage();
@@ -144,6 +148,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
+
+    private void showPlandeformation() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+        startActivity(intent);
+        this.navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+
     private void showMessageriePage(){
         Intent intent = new Intent(getApplicationContext(), MessagerieHome.class);
         startActivity(intent);
