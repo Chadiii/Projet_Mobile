@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetmobile.R;
-import com.example.projetmobile.model.Product;
+import com.example.projetmobile.model.Module;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -19,11 +19,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class ProductsActivity extends AppCompatActivity {
+public class ModulesActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private ProductsAdapter adapter;
-    private List<Product> productList;
+    private ModulesAdapter adapter;
+    private List<Module> productList;
     private ProgressBar progressBar;
 
 
@@ -32,7 +32,7 @@ public class ProductsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_products);
+        setContentView(R.layout.activity_modules);
 
         progressBar = findViewById(R.id.progressbar);
 
@@ -41,7 +41,7 @@ public class ProductsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         productList = new ArrayList<>();
-        adapter = new ProductsAdapter(this, productList);
+        adapter = new ModulesAdapter(this, productList);
 
         recyclerView.setAdapter(adapter);
 
@@ -62,7 +62,7 @@ public class ProductsActivity extends AppCompatActivity {
 
                             for (DocumentSnapshot d : list) {
 
-                                Product p = d.toObject(Product.class);
+                                Module p = d.toObject(Module.class);
                                 p.setId(d.getId());
                                 productList.add(p);
 

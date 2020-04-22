@@ -4,13 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/ensias"
     tools:context=".activity.PlanDeFormation.MainActivity1">
+
+
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/applogo"
+        />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="28dp"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -24,41 +40,41 @@
             android:textColor="@color/colorPrimaryDark" />
 
         <EditText
-            android:id="@+id/edittext_name"
+            android:id="@+id/edittext_semestre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
 
             android:hint="Semestre"
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/edittext_brand"
+            android:id="@+id/edittext_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
 
             android:hint="Code Module"
             android:padding="10dp" />
 
 
         <EditText
-            android:id="@+id/edittext_desc"
+            android:id="@+id/edittext_intitule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:hint="Intitulé Module"
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/edittext_qty"
+            android:id="@+id/edittext_volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:digits="0123456789"
             android:hint="Volume horaire"
             android:inputType="text"
@@ -69,20 +85,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
+            android:background="@drawable/input_design"
             android:text="Ajouter"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark" />
+
+            android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/textview_view_products"
+            android:id="@+id/textview_view_modules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="7dp"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="7dp"
+            android:background="@drawable/buttons"
             android:text="Afficher le plan de Formation"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@android:color/white" />
 
 
     </LinearLayout>

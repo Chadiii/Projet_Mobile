@@ -15,32 +15,32 @@
             android:padding="5dp">
 
             <TextView
-                android:id="@+id/textview_name"
+                android:id="@+id/textview_semestre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nokia X6"
+                android:text="Semestre 4"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/textview_brand"
+                android:id="@+id/textview_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nokia"
+                android:text="M4.1"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
-                android:id="@+id/textview_desc"
+                android:id="@+id/textview_intitule"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="6GB Ram Snapdragon 660 SOC, 64gb Storage"
+                android:text="Test"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
-                android:id="@+id/textview_quantity"
+                android:id="@+id/textview_volume"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Available Units: 5"
+                android:text="Volume 56 Heures"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textStyle="bold" />
 

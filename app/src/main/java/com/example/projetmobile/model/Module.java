@@ -1,20 +1,19 @@
 package com.example.projetmobile.model;
 import com.google.firebase.firestore.Exclude;
 
-public class Product {
+public class Module {
 
 
-    @Exclude
-    private String id;
+    @Exclude private String id;
 
     private String semestre, code, intitule;
     private int volume;
 
-    public Product() {
+    public Module() {
 
     }
 
-    public Product(String semestre, String code, String intitule, int volume) {
+    public Module(String semestre, String code, String intitule, int volume) {
         this.semestre = semestre;
         this.code = code;
         this.intitule = intitule;
@@ -42,3 +41,4 @@ public class Product {
     }
 
 }
+
