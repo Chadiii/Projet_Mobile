@@ -14,7 +14,7 @@
         <activity android:name=".activity.messagerie.MessageList"></activity>
         <activity android:name=".activity.messagerie.MessageDetail" />
         <activity android:name=".activity.messagerie.NewMessage" />
-        <activity android:name=".activity.pedagogie.Notes" />
+        <activity android:name=".activity.pedagogie.Absence" />
         <activity android:name=".activity.pedagogie.Cours" />
         <activity android:name=".activity.evenement.Event" />
         <activity android:name=".activity.messagerie.MessagerieHome" />

@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
+
 import com.example.projetmobile.R;
 
-public class Notes extends AppCompatActivity {
+public class Absence extends AppCompatActivity {
 
     private CardView play1;
     private CardView play2;
@@ -26,7 +26,7 @@ public class Notes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notes);
+        setContentView(R.layout.activity_absence);
 
 
         this.play1= (CardView) findViewById(R.id.play1);

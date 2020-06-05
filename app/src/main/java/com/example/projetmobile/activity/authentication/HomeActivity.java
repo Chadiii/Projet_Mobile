@@ -19,7 +19,7 @@ import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
 import com.example.projetmobile.activity.pedagogie.Cours;
-import com.example.projetmobile.activity.pedagogie.Notes;
+import com.example.projetmobile.activity.pedagogie.Absence;
 import com.example.projetmobile.activity.users.SettingsActivity;
 import com.example.projetmobile.model.Users;
 import com.google.android.material.navigation.NavigationView;
@@ -172,7 +172,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
     private void showNotePage(){
-        Intent intent = new Intent(getApplicationContext(), Notes.class);
+        Intent intent = new Intent(getApplicationContext(), Absence.class);
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
