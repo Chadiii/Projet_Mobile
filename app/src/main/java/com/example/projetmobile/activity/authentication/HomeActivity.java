@@ -15,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.PlanDeFormation.MainActivity1;
+import com.example.projetmobile.activity.PlanDeFormation.ModulesActivity;
 import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
@@ -150,7 +151,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void showPlandeformation() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+        Intent intent = new Intent(getApplicationContext(), ModulesActivity.class);
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }

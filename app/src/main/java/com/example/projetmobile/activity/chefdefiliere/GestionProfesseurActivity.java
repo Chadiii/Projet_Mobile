@@ -1,6 +1,7 @@
 package com.example.projetmobile.activity.chefdefiliere;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -38,6 +39,8 @@ public class GestionProfesseurActivity extends AppCompatActivity {
     private EditText emailProfesseur, nomProfesseur, prenomProfesseur, telephoneProfesseur, passwordProfesseur, confirmProfesseurPassword;
     private Button validerProfesseurBtn, listPtofesseurBtn;
 
+    String pEmail, pNom, pPrenom, pTelephone;
+
     ProgressDialog loadingBar;
 
     private FirebaseAuth mAuth;
@@ -46,6 +49,8 @@ public class GestionProfesseurActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_professeur);
+
+        //ActionBar actionBar = getSupportActionBar();
 
         emailProfesseur = findViewById(R.id.emailPro);
         nomProfesseur = findViewById(R.id.nomPro);
@@ -56,6 +61,20 @@ public class GestionProfesseurActivity extends AppCompatActivity {
         validerProfesseurBtn = findViewById(R.id.validButProf);
         listPtofesseurBtn = findViewById(R.id.listButProf);
 
+        /*Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            actionBar.setTitle("Update Data");
+            validerProfesseurBtn.setText("Valider les modifications");
+            pEmail = bundle.getString("pEmail");
+            pNom = bundle.getString("pNom");
+            pPrenom = bundle.getString("pPrenom");
+            pTele = bundle.getString("pEmail");
+
+        }else {
+            actionBar.setTitle("Add Data");
+            validerProfesseurBtn.setText("Valider la création");
+        }
+        */
         loadingBar = new ProgressDialog(this);
 
         mAuth = FirebaseAuth.getInstance();

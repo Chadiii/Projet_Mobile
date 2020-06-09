@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.PlanDeFormation.MainActivity1;
 import com.example.projetmobile.activity.chefdefiliere.GestionProfesseurActivity;
 
 public class ChefFiliereActivity extends AppCompatActivity {
 
-    private Button GestionProfesseur;
+    private Button GestionProfesseur, Deconnexion, AjoutEmplBtn, AjoutePlanBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,9 @@ public class ChefFiliereActivity extends AppCompatActivity {
        setContentView(R.layout.activity_chef_filiere);
 
        GestionProfesseur = findViewById(R.id.GestionProfbutton);
+       Deconnexion = findViewById(R.id.Deconnexion);
+       AjoutEmplBtn = findViewById(R.id.AjoutEmploi);
+       AjoutePlanBtn = findViewById(R.id.AjoutPlanForm);
 
        GestionProfesseur.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -29,5 +33,31 @@ public class ChefFiliereActivity extends AppCompatActivity {
                startActivity(intent);
            }
        });
+
+       Deconnexion.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent( ChefFiliereActivity.this, LoginActivity.class);
+               startActivity(intent);
+           }
+       });
+
+       AjoutePlanBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent( ChefFiliereActivity.this, MainActivity1.class);
+               startActivity(intent);
+           }
+       });
+
+       AjoutEmplBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent( ChefFiliereActivity.this, GestionProfesseurActivity.class);
+               startActivity(intent);
+           }
+       });
+
+
     }
 }
