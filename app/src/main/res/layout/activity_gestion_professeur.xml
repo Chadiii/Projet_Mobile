@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.chefdefiliere.GestionProfesseurActivity">
+
+    <!-- email nom penom telephone role-->
+
+    <EditText
+        android:id="@+id/emailPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:hint="Email"
+        android:layout_below="@id/textView2"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/nomPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailPro"
+        android:padding="10dp"
+        android:hint="Nom"
+        android:inputType="text"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/prenomPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nomPro"
+        android:padding="10dp"
+        android:inputType="text"
+        android:hint="Prenom"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/telephonePro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/prenomPro"
+        android:padding="10dp"
+        android:inputType="number"
+        android:hint="Telephone"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/passwordPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/telephonePro"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/confpasswordPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordPro"
+        android:padding="10dp"
+        android:inputType="textPassword"
+        android:hint="Confirm Password"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:id="@+id/validButProf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:text="Valider les modifications" />
+
+    <Button
+        android:id="@+id/listButProf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="90dp"
+        android:text="Consulter la Liste de Professeur" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Modifier un Professeur" />
+
+
+</RelativeLayout>

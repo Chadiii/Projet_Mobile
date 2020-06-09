@@ -92,62 +92,69 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccount(final String email, final String password) {
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        if (email.equals("chef@gmail.com") && password.equals("chef")) {
+            Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+            loadingBar.dismiss();
+            Intent intent = new Intent(LoginActivity.this, ChefFiliereActivity.class);
+            startActivity(intent);
+        } else {
 
-        mAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            //get user data
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            if (user != null) {
-                                DocumentReference docRef = db.collection("Users").document(user.getUid());
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document.exists()) {
-                                                Log.d("succ", "DocumentSnapshot data: " + document.getData());
-                                                Map<String, Object> userData = document.getData();
-                                                String userEmail = (String) userData.get("email");
-                                                String userNom = (String) userData.get("nom");
-                                                String userPrenom = (String) userData.get("prenom");
-                                                String userPhone = (String) userData.get("telephone");
-                                                Log.d("data", userEmail+" "+userNom+" "+userPrenom+" "+userPhone);
-                                                Users currentUser = new Users(userEmail, userNom, userPrenom, userPhone);
-                                                Users.setCurrentUser(currentUser);
+            mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                //get user data
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                if (user != null) {
+                                    DocumentReference docRef = db.collection("Users").document(user.getUid());
+                                    docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                DocumentSnapshot document = task.getResult();
+                                                if (document.exists()) {
+                                                    Log.d("succ", "DocumentSnapshot data: " + document.getData());
+                                                    Map<String, Object> userData = document.getData();
+                                                    String userEmail = (String) userData.get("email");
+                                                    String userNom = (String) userData.get("nom");
+                                                    String userPrenom = (String) userData.get("prenom");
+                                                    String userPhone = (String) userData.get("telephone");
+                                                    Log.d("data", userEmail + " " + userNom + " " + userPrenom + " " + userPhone);
+                                                    Users currentUser = new Users(userEmail, userNom, userPrenom, userPhone);
+                                                    Users.setCurrentUser(currentUser);
 
-                                                Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
-                                                loadingBar.dismiss();
-                                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                                                startActivity(intent);
+                                                    Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
+                                                    loadingBar.dismiss();
+                                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                                    startActivity(intent);
 
+                                                } else {
+                                                    Log.d("not", "No such document");
+                                                    Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                    loadingBar.dismiss();
+                                                }
                                             } else {
-                                                Log.d("not", "No such document");
+                                                Log.d("failed", "get failed with ", task.getException());
                                                 Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                                 loadingBar.dismiss();
                                             }
-                                        } else {
-                                            Log.d("failed", "get failed with ", task.getException());
-                                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                            loadingBar.dismiss();
                                         }
-                                    }
-                                });
-                            }
+                                    });
+                                }
 
                             /*Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);*/
-                        } else {
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
-                        }
+                            } else {
+                                Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                loadingBar.dismiss();
+                            }
 
-                    }
-                });
+                        }
+                    });
+        }
     }
 }
 

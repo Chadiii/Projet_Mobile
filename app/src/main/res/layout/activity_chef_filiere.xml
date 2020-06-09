@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.authentication.ChefFiliereActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:text="Hello chef de filiere"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="213dp" />
+
+
+    <Button
+        android:id="@+id/GestionProfbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/textView"
+        android:layout_marginTop="120dp"
+        android:text="Gestion de Professeur" />
+
+    <Button
+        android:id="@+id/GestionEtudbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/GestionProfbutton"
+        android:text="Gestion des Etudiants" />
+
+    <Button
+        android:id="@+id/AjoutPlanForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/GestionEtudbutton"
+        android:layout_centerHorizontal="true"
+        android:text="Ajouter des Plans de Formation" />
+
+    <Button
+        android:id="@+id/AjoutEmploi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/AjoutPlanForm"
+        android:text="Ajouter un Emploi" />
+
+    <Button
+        android:id="@+id/Deconnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/AjoutEmploi"
+        android:text="Deconnexion" />
+</RelativeLayout>
