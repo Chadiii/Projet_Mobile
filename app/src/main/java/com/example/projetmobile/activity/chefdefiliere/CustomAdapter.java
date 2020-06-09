@@ -61,6 +61,7 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
         // set data
         holder.mTelephone.setText(modelList.get(position).getTelephone());
         holder.mNom.setText(modelList.get(position).getNom());
+        holder.mEmail.setText(modelList.get(position).getEmail1());
 
     }
 

@@ -75,7 +75,7 @@ public class listProfesseurActivity extends AppCompatActivity {
         pd.setTitle("Loading Data...");
         pd.show();
 
-        db.collection("Users")
+        db.collection("Users").whereEqualTo("role", "Professeur")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

@@ -36,7 +36,7 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         });
 
         mEmail = itemView.findViewById(R.id.rEmail);
-        mNom = itemView.findViewById(R.id.rEmail);
+        mNom = itemView.findViewById(R.id.rNom);
         mTelephone = itemView.findViewById(R.id.rTelephone);
 
     }
