@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //Set user name in drawer header
         View headerView = navigationView.getHeaderView(0);
         TextView userName = headerView.findViewById(R.id.user_profile_name);
-        if(user != null && userName != null) userName.setText(user.displayName());
+        if(user != null && userName != null) userName.setText(user.displayName()+"\n("+user.getRole()+")");
     }
 
 

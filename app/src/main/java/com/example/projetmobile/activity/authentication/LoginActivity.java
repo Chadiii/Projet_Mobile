@@ -120,8 +120,9 @@ public class LoginActivity extends AppCompatActivity {
                                                     String userNom = (String) userData.get("nom");
                                                     String userPrenom = (String) userData.get("prenom");
                                                     String userPhone = (String) userData.get("telephone");
-                                                    Log.d("data", userEmail + " " + userNom + " " + userPrenom + " " + userPhone);
-                                                    Users currentUser = new Users(userEmail, userNom, userPrenom, userPhone);
+                                                    String role = (String) userData.get("role");
+                                                    Log.d("data", userEmail+" "+userNom+" "+userPrenom+" "+userPhone);
+                                                    Users currentUser = new Users(userEmail, userNom, userPrenom, userPhone, role);
                                                     Users.setCurrentUser(currentUser);
 
                                                     Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.projetmobile.MainActivity;
@@ -37,6 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button CreateAccountButton;
     private EditText InputPrenom, InputNom, InputPassword, InputConfirmPassword, InputEmail, InputTelephone;
     private ProgressDialog loadingBar;
+    private RadioGroup radioGroupRole;
 
     private FirebaseAuth mAuth;
 
@@ -54,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         InputTelephone = (EditText) findViewById(R.id.register_telephone_input);
         InputPassword = (EditText) findViewById(R.id.register_password_input);
         InputConfirmPassword = (EditText) findViewById(R.id.register_confirm_password_input);
+        radioGroupRole = findViewById(R.id.register_role_buttonGroup);
 
         loadingBar = new ProgressDialog(this);
 
@@ -67,6 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String telephone = InputTelephone.getText().toString();
                 String password = InputPassword.getText().toString();
                 String confirmPassword = InputConfirmPassword.getText().toString();
+                String role = (radioGroupRole.getCheckedRadioButtonId()==R.id.register_role_student)?"Elève":"Professeur";
 
 
 
@@ -97,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity {
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
-                    ValidateLogin(email, nom, prenom, telephone, password);
+                    ValidateLogin(email, nom, prenom, telephone, password, role);
                 }
             }
         });
@@ -105,7 +109,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void ValidateLogin(final String email, final String nom, final String prenom, final String telephone,final String password) {
+    private void ValidateLogin(final String email, final String nom, final String prenom, final String telephone,final String password, final String role) {
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -122,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
                             userData.put("nom", nom);
                             userData.put("prenom", prenom);
                             userData.put("telephone", telephone);
+                            userData.put("role", role);
 
                             db.collection("Users").document(user.getUid())
                                     .set(userData)

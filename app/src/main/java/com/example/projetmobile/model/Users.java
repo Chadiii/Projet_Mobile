@@ -5,17 +5,18 @@ import java.io.Serializable;
 public class Users implements Serializable {
     private static Users currentUser;
 
-    private String email, login, nom, prenom, password, type, telephone;
+    private String email, login, nom, prenom, password, type, telephone, role;
 
     public Users(){
 
     }
 
-    public Users(String email, String nom, String prenom, String telephone){
+    public Users(String email, String nom, String prenom, String telephone, String role){
         this.email = email;
         this.telephone = telephone;
         this.nom = nom;
         this.prenom = prenom;
+        this.role = role;
     }
 
     public Users(String email, String login, String nom, String prenom, String password, String type) {
@@ -78,7 +79,13 @@ public class Users implements Serializable {
     public String getPassword() {
         return password;
     }
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
     public void setPassword(String password) {
         this.password = password;
     }
