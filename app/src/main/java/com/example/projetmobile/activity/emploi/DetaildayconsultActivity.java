@@ -37,6 +37,7 @@ public class DetaildayconsultActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView listView;
     private FirebaseDatabase database;
+    private String a;
     private DatabaseReference rootRef;
     List<Tabletime> listemploil,listemploim,listemploime,listemploij,listemploiv,listemplois;
     ArrayList<String> subjectsl,subjectsm ,subjectsme, subjectsj,subjectsv,subjectss ;
@@ -58,6 +59,13 @@ public class DetaildayconsultActivity extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
+        if(userYearActivity.ssharedPreferences.getString(userYearActivity.SEL_YEAR, null) == null){
+            a = YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null);
+        }else {
+            a = userYearActivity.ssharedPreferences.getString(userYearActivity.SEL_YEAR, null);
+        }
+
         super.onStart();
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("Tabletime")
@@ -67,7 +75,10 @@ public class DetaildayconsultActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             Map<String, Object> tablet = document.getData();
-                            if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null).equals("2éme année") && ((String)tablet.get("année")).equals("2éme année")) {
+
+
+
+                            if (a.equals("2éme année") && ((String)tablet.get("année")).equals("2éme année")) {
 
                                 switch ((String)tablet.get("jour")) {
                                     case "Lundi":
@@ -119,7 +130,7 @@ public class DetaildayconsultActivity extends AppCompatActivity {
                                         break;
                                 }
                             }
-                            if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null).equals("3éme année") && ((String)tablet.get("année")).equals("3éme année")) {
+                            if (a.equals("3éme année") && ((String)tablet.get("année")).equals("3éme année")) {
                                 switch ((String)tablet.get("jour")) {
                                     case "Lundi":
                                         subjectsl.add((String)tablet.get("matiere"));

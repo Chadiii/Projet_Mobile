@@ -11,10 +11,12 @@ import android.widget.TextView;
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.PlanDeFormation.MainActivity1;
 import com.example.projetmobile.activity.chefdefiliere.GestionProfesseurActivity;
+import com.example.projetmobile.activity.emploi.YearActivity;
+import com.example.projetmobile.activity.pedagogie.Absence;
 
 public class ChefFiliereActivity extends AppCompatActivity {
 
-    private Button GestionProfesseur, Deconnexion, AjoutEmplBtn, AjoutePlanBtn;
+    private Button GestionProfesseur, Deconnexion, AjoutEmplBtn, AjoutePlanBtn, AbsenceBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class ChefFiliereActivity extends AppCompatActivity {
        Deconnexion = findViewById(R.id.Deconnexion);
        AjoutEmplBtn = findViewById(R.id.AjoutEmploi);
        AjoutePlanBtn = findViewById(R.id.AjoutPlanForm);
+       AbsenceBtn = findViewById(R.id.AbscenceBtn);
 
        GestionProfesseur.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -53,11 +56,18 @@ public class ChefFiliereActivity extends AppCompatActivity {
        AjoutEmplBtn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
-               Intent intent = new Intent( ChefFiliereActivity.this, GestionProfesseurActivity.class);
+               Intent intent = new Intent( ChefFiliereActivity.this, YearActivity.class);
                startActivity(intent);
            }
        });
 
+       AbsenceBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent intent = new Intent( ChefFiliereActivity.this, Absence.class);
+               startActivity(intent);
+           }
+       });
 
     }
 }

@@ -71,6 +71,7 @@ public class DayDetailActivity extends AppCompatActivity {
                     Toast.makeText(DayDetailActivity.this, "Please remplissez la salle ...", Toast.LENGTH_SHORT).show();
                 }
 
+
                 else{
 
                     if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR,null).equals("2éme année")) {

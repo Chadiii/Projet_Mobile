@@ -56,11 +56,20 @@
         android:text="Ajouter un Emploi" />
 
     <Button
-        android:id="@+id/Deconnexion"
+        android:id="@+id/AbscenceBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/AjoutEmploi"
+        android:text="Gestion d'Absence" />
+
+    <Button
+        android:id="@+id/Deconnexion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/AbscenceBtn"
         android:text="Deconnexion" />
 </RelativeLayout>
