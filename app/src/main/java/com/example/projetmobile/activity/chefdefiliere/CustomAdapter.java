@@ -19,11 +19,17 @@ import java.util.List;
 public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     listProfesseurActivity ListProfesseurActivity;
+    listEtudiantActivity ListEtudiantActivity;
     List<Model> modelList;
     Context context;
 
     public CustomAdapter(listProfesseurActivity listProfesseurActivity, List<Model> modelList) {
         ListProfesseurActivity = listProfesseurActivity;
+        this.modelList = modelList;
+    }
+
+    public CustomAdapter(listEtudiantActivity listEtudiantActivity, List<Model> modelList) {
+        ListEtudiantActivity = listEtudiantActivity;
         this.modelList = modelList;
     }
 

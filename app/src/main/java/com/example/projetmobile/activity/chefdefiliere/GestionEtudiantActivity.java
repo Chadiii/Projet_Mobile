@@ -40,7 +40,7 @@ public class GestionEtudiantActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gestion_professeur);
+        setContentView(R.layout.activity_gestion_etudiant);
 
         //ActionBar actionBar = getSupportActionBar();
 
@@ -117,7 +117,7 @@ public class GestionEtudiantActivity extends AppCompatActivity {
         listPtofesseurBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GestionEtudiantActivity.this, listProfesseurActivity.class));
+                startActivity(new Intent(GestionEtudiantActivity.this, listEtudiantActivity.class));
             }
         });
 
@@ -140,7 +140,7 @@ public class GestionEtudiantActivity extends AppCompatActivity {
                             userData.put("nom", nom);
                             userData.put("prenom", prenom);
                             userData.put("telephone", telephone);
-                            userData.put("role", "Professeur");
+                            userData.put("role", "Elève");
 
                             db.collection("Users").document(user.getUid())
                                     .set(userData)
