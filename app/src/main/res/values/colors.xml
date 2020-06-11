@@ -6,9 +6,10 @@
     <color name="white">#cccccc</color>
     <color name="blue">#547bca</color>
     <color name="ccc">#000000</color>
-
     <color name="gray">#FFFFFF</color>
     <color name="black">#03224C</color>
+    <color name="bbb">#0099cc</color>
+
 
     <string-array name="colors" translatable="false">
         <item>#99cc00</item>

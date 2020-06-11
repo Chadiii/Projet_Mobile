@@ -45,6 +45,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         user = Users.getCurrentUser();
 
+
         //Configure all views
         this.configureToolBar();
 

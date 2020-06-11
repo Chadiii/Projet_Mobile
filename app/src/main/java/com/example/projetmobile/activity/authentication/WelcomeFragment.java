@@ -29,7 +29,7 @@ public class WelcomeFragment extends Fragment {
         TextView welcome = root.findViewById(R.id.text_home);
         Users user = Users.getCurrentUser();
         if(user != null)
-            welcome.setText("Welcome "+user.displayName());
+            welcome.setText("Bienvenue "+user.displayName());
 
         return root;
     }

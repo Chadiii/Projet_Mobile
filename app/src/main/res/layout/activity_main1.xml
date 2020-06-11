@@ -28,7 +28,11 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="28dp"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="6dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -36,16 +40,21 @@
             android:layout_marginBottom="7dp"
             android:text="Plan Formation"
             android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="25dp"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/colorPrimaryDark" />
+            android:textColor="@color/colorPrimaryDark"
+            android:gravity="center_horizontal" />
 
         <EditText
             android:id="@+id/edittext_semestre"
             android:layout_width="match_parent"
+            android:background="@drawable/input_design"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textStyle="bold"
             android:hint="Semestre"
             android:padding="10dp" />
 
@@ -53,9 +62,11 @@
             android:id="@+id/edittext_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/input_design"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textStyle="bold"
             android:hint="Code Module"
             android:padding="10dp" />
 
@@ -64,7 +75,10 @@
             android:id="@+id/edittext_intitule"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:background="@drawable/input_design"
             android:layout_marginTop="5dp"
+            android:textStyle="bold"
             android:layout_marginBottom="5dp"
             android:hint="Intitulé Module"
             android:padding="10dp" />
@@ -73,9 +87,12 @@
             android:id="@+id/edittext_volume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:background="@drawable/input_design"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
             android:digits="0123456789"
+            android:textStyle="bold"
             android:hint="Volume horaire"
             android:inputType="text"
             android:padding="10dp" />
@@ -85,10 +102,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
-            android:background="@drawable/input_design"
             android:text="Ajouter"
             android:textAllCaps="false"
-
+            android:textStyle="bold"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:background="@drawable/buttons"
             android:textColor="@android:color/white" />
 
         <Button
@@ -97,11 +115,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="7dp"
+            android:textStyle="bold"
             android:background="@drawable/buttons"
             android:text="Afficher le plan de Formation"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_horizontal" />
 
 
     </LinearLayout>
