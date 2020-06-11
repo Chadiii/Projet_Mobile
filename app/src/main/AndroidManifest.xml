@@ -36,6 +36,8 @@
         <activity android:name=".activity.emploi.DetaildayconsultActivity" />
         <activity android:name=".activity.PlanDeFormation.MainActivity1" />
         <activity android:name=".activity.PlanDeFormation.ModulesActivity" />
+        <activity android:name=".activity.about.About" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

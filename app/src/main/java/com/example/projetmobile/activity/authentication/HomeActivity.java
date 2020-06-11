@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.PlanDeFormation.MainActivity1;
 import com.example.projetmobile.activity.PlanDeFormation.ModulesActivity;
+import com.example.projetmobile.activity.about.About;
 import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.emploi.userYearActivity;
 import com.example.projetmobile.activity.evenement.Event;
@@ -97,6 +98,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_messagerie:
                 this.showMessageriePage();
+                break;
+
+            case R.id.about:
+                this.showAboutPage();
                 break;
             case R.id.nav_logout:
                 this.logoutUser();
@@ -181,6 +186,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
     private void showSettingPage(){
         Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);
+        this.navigationView.getMenu().getItem(0).setChecked(true);
+    }
+
+    private void showAboutPage(){
+        Intent intent = new Intent(getApplicationContext(), About.class);
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }

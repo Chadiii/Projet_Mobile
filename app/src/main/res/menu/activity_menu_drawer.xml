@@ -43,6 +43,12 @@
                 android:id="@+id/nav_messagerie"
                 android:icon="@drawable/ic_email_black_24dp"
                 android:title="Boite de messagerie" />
+
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_library_books_black_24dp"
+                android:title="À propos de Nous" />
+
             <item
                 android:id="@+id/nav_logout"
                 android:icon="@drawable/ic_exit_to_app_black_24dp"
