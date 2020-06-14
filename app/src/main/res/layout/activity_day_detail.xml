@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
-        app:titleTextColor="@color/white"
+        app:titleTextColor="@color/gray"
         android:id="@+id/ToolbarDay">
 
     </androidx.appcompat.widget.Toolbar>
@@ -106,7 +106,6 @@
         android:padding="17dp"
         android:textSize="18sp"
         android:textAllCaps="false"
-        android:text="Enregistrer"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         />

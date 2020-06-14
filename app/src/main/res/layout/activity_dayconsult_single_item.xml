@@ -1,7 +1,11 @@
-<androidx.cardview.widget.CardView android:layout_height="wrap_content"
+<androidx.cardview.widget.CardView
+    android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:background="@color/colorAccent"
-    android:elevation="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@android:color/white"
+    android:elevation="3dp"
+    android:layout_margin="2dp"
+    app:cardCornerRadius="3dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
@@ -19,8 +23,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvonsultsingleitemsubject"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/ccc"
+            android:textSize="21sp"
+            android:textColor="@color/black"
             android:layout_toRightOf="@+id/ivdayconsultsingleitem"
             android:layout_alignTop="@+id/ivdayconsultsingleitem"
             android:layout_alignParentRight="true"
@@ -36,8 +40,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvonsultsingleitemens"
                 android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/ccc"
+                android:textSize="13sp"
+                android:textColor="@color/black"
                 android:gravity="start"
                 android:layout_weight="40"
                  />
@@ -46,8 +50,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvonsultsingleitemsalle"
                 android:textStyle="bold"
-                android:textSize="12sp"
-                android:textColor="@color/ccc"
+                android:textSize="13sp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:layout_weight="30"
                 android:padding="20dp"/>
@@ -56,10 +60,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvonsultsingleitemtime"
-                android:textColor="@color/ccc"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textSize="12sp"
-                android:layout_gravity="end"
+                android:textSize="13sp"
+                android:gravity="end"
                 android:layout_weight="30"
                 android:padding="20dp"/>
         </LinearLayout>

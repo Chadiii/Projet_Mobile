@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tvsecondweek"
             android:text="Days"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="24sp"
             android:layout_toRightOf="@+id/LVsecondweek"

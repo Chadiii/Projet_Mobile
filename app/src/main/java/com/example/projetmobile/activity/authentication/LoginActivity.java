@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText inputEmail, inputPassword;
     private Button loginButton;
     private ProgressDialog loadingBar;
-
+    FirebaseFirestore db;
     private FirebaseAuth mAuth;
 
     @Override
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         String receivedEmail = (String)i.getSerializableExtra("email");
 
         mAuth = FirebaseAuth.getInstance();
-
+        db = FirebaseFirestore.getInstance();
         loginButton = (Button) findViewById(R.id.login_btn);
         inputPassword = (EditText) findViewById(R.id.login_password_input);
         inputEmail = (EditText) findViewById(R.id.email_input);
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void AllowAccessToAccount(final String email, final String password) {
-        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         if (email.equals("chef@gmail.com") && password.equals("chef")) {
             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
             loadingBar.dismiss();

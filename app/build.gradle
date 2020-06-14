@@ -27,9 +27,11 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:11.8.0'
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.google.firebase:firebase-storage:11.8.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
     implementation 'com.firebaseui:firebase-ui-database:3.2.2'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'io.paperdb:paperdb:2.6'
+    implementation 'com.android.support:design:29.0.0'
     implementation 'com.google.android.material:material:1.2.0-alpha05'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.2.1'

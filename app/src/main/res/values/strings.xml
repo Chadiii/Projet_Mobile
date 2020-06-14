@@ -15,9 +15,9 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="detail">Veuillez renseigner les champs suivants afin de créer une scéance:</string>
-    <string name="ensias">L\'objectif de la filiére Ingénierie du Web et Informatique Mobile (IWIM) est
-    de former des ingénieurs spécialisés dans les systémes intelligents mobiles basés sur les nouvelles technologies du Web
-    orientés vers des services à base de cloud</string>
+    <string name="ensias">"L\'objectif de la filiére Ingénierie du Web et Informatique Mobile (IWIM) est
+    de former des ingénieurs spécialisés dans les systémes intelligents mobiles basés sur les nouvelles technologies
+        du web à base du cloud."</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

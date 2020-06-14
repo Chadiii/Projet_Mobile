@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.model.Users;
 
 
 public class YearActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class YearActivity extends AppCompatActivity {
     private Button button2;
     public static SharedPreferences ssharedPreferences;
     public static String SEL_YEAR;
+    Users user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,25 +28,37 @@ public class YearActivity extends AppCompatActivity {
         setContentView(R.layout.activity_year);
         setupUIViews();
         initToolbar();
+        user = Users.getCurrentUser();
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ssharedPreferences.edit().putString(SEL_YEAR, "2éme année").apply();
-                Intent intent = new Intent(YearActivity.this, ConsultCreateActivity.class);
-                startActivity(intent);
+                if(user==null) {
+                    Intent intent = new Intent(YearActivity.this, ConsultCreateActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(YearActivity.this, SecondweekActivity.class);
+                    startActivity(intent);
+
+                }
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ssharedPreferences.edit().putString(SEL_YEAR, "3éme année").apply();
-                Intent intent = new Intent(YearActivity.this, ConsultCreateActivity.class);
-                startActivity(intent);
+                if(user==null) {
+                    Intent intent = new Intent(YearActivity.this, ConsultCreateActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(YearActivity.this, SecondweekActivity.class);
+                    startActivity(intent);
+                }
             }
         });
-
     }
-
     private void setupUIViews() {
         toolbar = (Toolbar) findViewById(R.id.ToolbarYear);
         button1 = (Button) findViewById(R.id.Second_Year_btn);

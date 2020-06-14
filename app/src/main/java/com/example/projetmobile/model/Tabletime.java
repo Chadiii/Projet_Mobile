@@ -5,22 +5,23 @@ import java.text.SimpleDateFormat;
 public class Tabletime {
 
 
-    private String horaire, matiere, enseignant, salle, jour, année;
-    private String  date;
+    private String horaire, matiere, enseignant, salle, jour, année,id;
+
 
     public Tabletime(){
 
     }
 
-    public Tabletime(String horaire, String matiere, String enseignant, String salle, String jour, String année, String date) {
+    public Tabletime(String horaire, String matiere, String enseignant, String salle, String jour, String année, String id) {
         this.horaire = horaire;
         this.matiere = matiere;
         this.enseignant = enseignant;
         this.salle = salle;
         this.jour = jour;
         this.année = année;
-        this.date = date;
+        this.id = id;
     }
+
 
     public String getHoraire() {
         return horaire;
@@ -70,11 +71,9 @@ public class Tabletime {
         this.année = année;
     }
 
-    public String getDate() {
-        return date;
-    }
+    public String getId() { return id; }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
+    public void setId(String id) { this.id = id; }
+
+
 }

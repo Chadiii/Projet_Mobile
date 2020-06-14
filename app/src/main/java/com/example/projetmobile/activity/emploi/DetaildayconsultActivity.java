@@ -1,275 +1,170 @@
 package com.example.projetmobile.activity.emploi;
 
-import android.app.Activity;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
 
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-
+import androidx.core.view.MenuItemCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetmobile.R;
-import com.example.projetmobile.Utils.LetterImageView;
 import com.example.projetmobile.model.Tabletime;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class DetaildayconsultActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private ListView listView;
-    private FirebaseDatabase database;
-    private String a;
-    private DatabaseReference rootRef;
+    RecyclerView emploitrecyclerview;
+    RecyclerView.LayoutManager layoutManager;
+    EmploiAdapter emploiAdapter;
+    ProgressDialog progressDialog;
     List<Tabletime> listemploil,listemploim,listemploime,listemploij,listemploiv,listemplois;
     ArrayList<String> subjectsl,subjectsm ,subjectsme, subjectsj,subjectsv,subjectss ;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detaildayconsult);
-        subjectsl = new ArrayList<String>();listemploil=new ArrayList<Tabletime>();subjectsm = new ArrayList<String>();
-        listemploim=new ArrayList<>();subjectsme = new ArrayList<String>();listemploime=new ArrayList<>();
-        subjectsj = new ArrayList<String>();listemploij=new ArrayList<>();subjectsv = new ArrayList<String>();
-        listemploiv=new ArrayList<>();subjectss = new ArrayList<String>();listemplois=new ArrayList<>();
-        listemploil.clear();subjectsl.clear();listemploim.clear();subjectsm.clear();listemploime.clear();subjectsme.clear();
-        listemploij.clear();subjectsj.clear();listemploiv.clear();subjectsv.clear();listemplois.clear();subjectss.clear();
-
+        Initialisation();
+        Clear();
+        progressDialog = new ProgressDialog(this);
+        db = FirebaseFirestore.getInstance();
         setupUIViews();
         initToolbar();
+        emploitrecyclerview.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        emploitrecyclerview.setLayoutManager(layoutManager);
+        showdata();
+
     }
-
-    @Override
-    protected void onStart() {
-
-        if(userYearActivity.ssharedPreferences.getString(userYearActivity.SEL_YEAR, null) == null){
-            a = YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null);
-        }else {
-            a = userYearActivity.ssharedPreferences.getString(userYearActivity.SEL_YEAR, null);
-        }
-
-        super.onStart();
-        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private void showdata() {
+        progressDialog.setTitle("Loading Data ... ");
+        progressDialog.show();
         db.collection("Tabletime")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            Map<String, Object> tablet = document.getData();
-
-
-
-                            if (a.equals("2éme année") && ((String)tablet.get("année")).equals("2éme année")) {
-
-                                switch ((String)tablet.get("jour")) {
-                                    case "Lundi":
-                                        subjectsl.add((String)tablet.get("matiere"));
-                                        listemploil.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Mardi":
-                                        subjectsm.add((String)tablet.get("matiere"));
-                                        listemploim.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Mercredi":
-                                        subjectsme.add((String)tablet.get("matiere"));
-                                        listemploime.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Jeudi":
-                                        subjectsj.add((String)tablet.get("matiere"));
-                                        listemploij.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Vendredi":
-                                        subjectsv.add((String)tablet.get("matiere"));
-                                        listemploiv.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Samedi":
-                                        subjectss.add((String)tablet.get("matiere"));
-                                        listemplois.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-                                        break;
-                                }
-                            }
-                            if (a.equals("3éme année") && ((String)tablet.get("année")).equals("3éme année")) {
-                                switch ((String)tablet.get("jour")) {
-                                    case "Lundi":
-                                        subjectsl.add((String)tablet.get("matiere"));
-                                        listemploil.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Mardi":
-                                        subjectsm.add((String)tablet.get("matiere"));
-                                        listemploim.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Mercredi":
-                                        subjectsme.add((String)tablet.get("matiere"));
-                                        listemploime.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Jeudi":
-                                        subjectsj.add((String)tablet.get("matiere"));
-                                        listemploij.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Vendredi":
-                                        subjectsv.add((String)tablet.get("matiere"));
-                                        listemploiv.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-
-                                        break;
-                                    case "Samedi":
-                                        subjectss.add((String)tablet.get("matiere"));
-                                        listemplois.add(new Tabletime((String)tablet.get("horaire"), (String)tablet.get("matiere"),
-                                                (String)tablet.get("enseignant"), (String)tablet.get("salle"),
-                                                (String)tablet.get("jour"), (String)tablet.get("année"),
-                                                (String) tablet.get("Temps d'enregistrement")));
-                                        break;
-                                }
-
-                            }
-
+                        Clear();
+                        progressDialog.dismiss();
+                        for (QueryDocumentSnapshot doc : task.getResult()) {
+                             Tabletime tabletime= new Tabletime(doc.getString("horaire"),doc.getString("matiere"),
+                                    doc.getString("enseignant"),doc.getString("salle"),
+                                    doc.getString("jour"),doc.getString("année"),doc.getString("id"));
+                                    ChargementData(tabletime);
                         }
-
-                        switch (SecondweekActivity.sharedPreferences.getString(SecondweekActivity.dayy, null)) {
-                            case "Lundi": {
-                                EmploiList adapter = new EmploiList(DetaildayconsultActivity.this, listemploil, subjectsl);
-                                listView.setAdapter(adapter);
-                                break;
-                            }
-                            case "Mardi": {
-                                EmploiList adapter = new EmploiList(DetaildayconsultActivity.this, listemploim, subjectsm);
-                                listView.setAdapter(adapter);
-                                break;
-                            }
-                            case "Mercredi": {
-                                EmploiList adapter = new EmploiList(DetaildayconsultActivity.this, listemploime, subjectsme);
-                                listView.setAdapter(adapter);
-                                break;
-                            }
-                            case "Jeudi": {
-                                EmploiList adapter = new EmploiList(DetaildayconsultActivity.this, listemploij, subjectsj);
-                                listView.setAdapter(adapter);
-                                break;
-                            }
-                            case "Vendredi": {
-                                EmploiList adapter = new EmploiList(DetaildayconsultActivity.this, listemploiv, subjectsv);
-                                listView.setAdapter(adapter);
-                                break;
-                            }
-                            case "Samedi": {
-                                EmploiList adapter = new EmploiList(DetaildayconsultActivity.this, listemplois, subjectss);
-                                listView.setAdapter(adapter);
-                                break;
-                            }
-                        }
-
+                        ChargementAdapter();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(DetaildayconsultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+    }
+    public  void deleteData (int index){
+       progressDialog.setTitle( "Deleting Data...");
+       progressDialog.show();
+        if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null).equals("2éme année")) {
+            switch (SecondweekActivity.sharedPreferences.getString(SecondweekActivity.dayy, null)) {
+                case "Lundi": {
+                    deletelist(listemploil, index);
+                    showdata();
+                    break;
+                }
+                case "Mardi": {
+                    deletelist(listemploim, index);
+                    showdata();
+                    break;
+                }
+                case "Mercredi": {
+                    deletelist(listemploime, index);
+                    showdata();
+                    break;
+                }
+                case "Jeudi": {
+                    deletelist(listemploij, index);
+                    showdata();
+                    break;
+                }
+                case "Vendredi": {
+                    deletelist(listemploiv, index);
+                    showdata();
+                    break;
+                }
+                case "Samedi": {
+                    deletelist(listemplois, index);
+                    showdata();
+                    break;
+                }
             }
+        }
+            if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null).equals("3éme année")){
+                switch (SecondweekActivity.sharedPreferences.getString(SecondweekActivity.dayy, null)) {
+                    case "Lundi": {
+                        deletelist(listemploil, index);
+                        showdata();
+                        break;
+                    }
+                    case "Mardi": {
+                        deletelist(listemploim, index);
+                        showdata();
+                        break;
+                    }
+                    case "Mercredi": {
+                        deletelist(listemploime, index);
+                        showdata();
+                        break;
+                    }
+                    case "Jeudi": {
+                        deletelist(listemploij, index);
+                        showdata();
+                        break;
+                    }
+                    case "Vendredi": {
+                        deletelist(listemploiv, index);
+                        showdata();
+                        break;
+                    }
+                    case "Samedi": {
+                        deletelist(listemplois, index);
+                        showdata();
+                        break;
+                    }
+                }
+            }
+    }
 
     private void setupUIViews(){
-        toolbar = (Toolbar)findViewById(R.id.Toolbardetaildayconsult);
-        listView = (ListView)findViewById(R.id.lvdetaildayconsult);
+        toolbar = findViewById(R.id.Toolbardetaildayconsult);
+        emploitrecyclerview = findViewById(R.id.lvdetaildayconsult);
     }
+
     private void initToolbar(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(SecondweekActivity.sharedPreferences.getString(SecondweekActivity.dayy,null));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
-
-    public class EmploiList extends ArrayAdapter<Tabletime> {
-        private Activity context;
-        private List<Tabletime> tabletimelist;
-        private ArrayList<String> cours;
-
-
-        public EmploiList(Activity context1, List<Tabletime> tabletimelist, ArrayList<String> subjects) {
-            super(context1, R.layout.activity_dayconsult_single_item,tabletimelist);
-            this.context = context1;
-            this.tabletimelist = tabletimelist;
-            this.cours=subjects;
-
-        }
-
-
-        @Override
-        public View getView(int position,  View convertView,  ViewGroup parent) {
-            LayoutInflater  inflater=context.getLayoutInflater();
-            View listViewitem=inflater.inflate(R.layout.activity_dayconsult_single_item,null,true);
-            TextView matiere=(TextView)listViewitem.findViewById(R.id.tvonsultsingleitemsubject);
-            TextView enseignant=(TextView)listViewitem.findViewById(R.id.tvonsultsingleitemens);
-            TextView salle=(TextView)listViewitem.findViewById(R.id.tvonsultsingleitemsalle);
-            TextView horaire=(TextView)listViewitem.findViewById(R.id.tvonsultsingleitemtime);
-            LetterImageView letterImageView=(LetterImageView)listViewitem.findViewById(R.id.ivdayconsultsingleitem);
-
-            Tabletime tabletime=tabletimelist.get(position);
-            matiere.setText(tabletime.getMatiere());
-            enseignant.setText(tabletime.getEnseignant());
-            salle.setText(tabletime.getSalle());
-            horaire.setText(tabletime.getHoraire());
-            letterImageView.setOval(true);
-            letterImageView.setLetter(cours.get(position).charAt(0));
-            return listViewitem;
-        }
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_settingsemploi){
+            Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show();
+        }
         switch(item.getItemId()){
             case android.R.id.home : {
                 onBackPressed();
@@ -278,4 +173,179 @@ public class DetaildayconsultActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private void deletelist ( List<Tabletime> liste, int c){
+            db.collection("Tabletime").document(liste.get(c).getId())
+                    .delete()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressDialog.dismiss();
+                            Toast.makeText(DetaildayconsultActivity.this, "Deleted...", Toast.LENGTH_SHORT).show();
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(DetaildayconsultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+        }
+
+     private void Clear(){
+         listemploil.clear();subjectsl.clear();listemploim.clear();subjectsm.clear();listemploime.clear();subjectsme.clear();
+         listemploij.clear();subjectsj.clear();listemploiv.clear();subjectsv.clear();listemplois.clear();subjectss.clear();
+     }
+     private void Initialisation(){
+         subjectsl = new ArrayList<>();listemploil=new ArrayList<>();subjectsm = new ArrayList<>();
+         listemploim=new ArrayList<>();subjectsme = new ArrayList<>();listemploime=new ArrayList<>();
+         subjectsj = new ArrayList<>();listemploij=new ArrayList<>();subjectsv = new ArrayList<>();
+         listemploiv=new ArrayList<>();subjectss = new ArrayList<>();listemplois=new ArrayList<>();
+     }
+     //menu
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_search,menu);
+        MenuItem item=menu.findItem(R.id.action_searchemploi);
+        SearchView searchView=(SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchdata(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    private void searchdata(String query) {
+        progressDialog.setTitle("Searching");
+        progressDialog.show();
+        db.collection("Tabletime").whereEqualTo("search",query.toLowerCase())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Clear();
+                        progressDialog.dismiss();
+                        for (QueryDocumentSnapshot docc : task.getResult()) {
+                            Tabletime tab= new Tabletime(docc.getString("horaire"),docc.getString("matiere"),
+                                    docc.getString("enseignant"),docc.getString("salle"),
+                                    docc.getString("jour"),docc.getString("année"),docc.getString("id"));
+                            ChargementData(tab);
+                        }
+                        ChargementAdapter();
+                    }
+
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        progressDialog.dismiss();
+                        Toast.makeText(DetaildayconsultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+    private void ChargementData(Tabletime tabletime1){
+        if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null).equals("2éme année") && (tabletime1.getAnnée()).equals("2éme année")) {
+            switch (tabletime1.getJour()) {
+                case "Lundi":
+                    subjectsl.add(tabletime1.getMatiere());
+                    listemploil.add(tabletime1);
+                    break;
+                case "Mardi":
+                    subjectsm.add(tabletime1.getMatiere());
+                    listemploim.add(tabletime1);
+                    break;
+                case "Mercredi":
+                    subjectsme.add(tabletime1.getMatiere());
+                    listemploime.add(tabletime1);
+                    break;
+                case "Jeudi":
+                    subjectsj.add(tabletime1.getMatiere());
+                    listemploij.add(tabletime1);
+                    break;
+                case "Vendredi":
+                    subjectsv.add(tabletime1.getMatiere());
+                    listemploiv.add(tabletime1);
+                    break;
+                case "Samedi":
+                    subjectss.add(tabletime1.getMatiere());
+                    listemplois.add(tabletime1);
+                    break;
+            }
+        }
+        if (YearActivity.ssharedPreferences.getString(YearActivity.SEL_YEAR, null).equals("3éme année") && (tabletime1.getAnnée()).equals("3éme année")) {
+            switch (tabletime1.getJour()) {
+                case "Lundi":
+                    subjectsl.add(tabletime1.getMatiere());
+                    listemploil.add(tabletime1);
+                    break;
+                case "Mardi":
+                    subjectsm.add(tabletime1.getMatiere());
+                    listemploim.add(tabletime1);
+                    break;
+                case "Mercredi":
+                    subjectsme.add(tabletime1.getMatiere());
+                    listemploime.add(tabletime1);
+                    break;
+                case "Jeudi":
+                    subjectsj.add(tabletime1.getMatiere());
+                    listemploij.add(tabletime1);
+                    break;
+                case "Vendredi":
+                    subjectsv.add(tabletime1.getMatiere());
+                    listemploiv.add(tabletime1);
+                    break;
+                case "Samedi":
+                    subjectss.add(tabletime1.getMatiere());
+                    listemplois.add(tabletime1);
+                    break;
+            }
+        }
+    }
+    private  void ChargementAdapter(){
+        switch (SecondweekActivity.sharedPreferences.getString(SecondweekActivity.dayy, null)) {
+            case "Lundi": {
+                emploiAdapter = new EmploiAdapter(DetaildayconsultActivity.this,listemploil, subjectsl);
+                emploitrecyclerview.setAdapter(emploiAdapter);
+                break;
+            }
+            case "Mardi": {
+                emploiAdapter = new EmploiAdapter(DetaildayconsultActivity.this, listemploim, subjectsm);
+                emploitrecyclerview.setAdapter(emploiAdapter);
+                break;
+            }
+            case "Mercredi": {
+                emploiAdapter = new EmploiAdapter(DetaildayconsultActivity.this, listemploime, subjectsme);
+                emploitrecyclerview.setAdapter(emploiAdapter);
+                break;
+            }
+            case "Jeudi": {
+                emploiAdapter = new EmploiAdapter(DetaildayconsultActivity.this, listemploij, subjectsj);
+                emploitrecyclerview.setAdapter(emploiAdapter);
+                break;
+            }
+            case "Vendredi": {
+                emploiAdapter = new EmploiAdapter(DetaildayconsultActivity.this, listemploiv, subjectsv);
+                emploitrecyclerview.setAdapter(emploiAdapter);
+                break;
+            }
+            case "Samedi": {
+                emploiAdapter = new EmploiAdapter(DetaildayconsultActivity.this, listemplois, subjectss);
+                emploitrecyclerview.setAdapter(emploiAdapter);
+                break;
+            }
+        }
+
+    }
 }

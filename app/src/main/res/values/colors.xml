@@ -9,12 +9,14 @@
     <color name="gray">#FFFFFF</color>
     <color name="black">#03224C</color>
     <color name="bbb">#0099cc</color>
+    <color name="mmm">#000080</color>
 
 
     <string-array name="colors" translatable="false">
         <item>#99cc00</item>
         <item>#33b5e5</item>
         <item>#0099cc</item>
+        <item>#708090</item>
         <item>#547bca</item>
         <item>#aa66cc</item>
         <item>#9933cc</item>
@@ -23,6 +25,10 @@
         <item>#cc0000</item>
         <item>#df5948</item>
         <item>#ff4444</item>
+        <item>#000080</item>
+        <item>#008000</item>
+        <item>#808000</item>
+        <item>#2F4F4F</item>
         <item>#ae6b23</item>
         <item>#ff8800</item>
         <item>#e5ae4f</item>
