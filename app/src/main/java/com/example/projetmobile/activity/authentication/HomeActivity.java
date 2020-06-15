@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.PlanDeFormation.ModulesActivity2;
 import com.example.projetmobile.activity.aboutUs.About;
-import com.example.projetmobile.activity.emploi.userYearActivity;
+import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
 import com.example.projetmobile.activity.pedagogie.Absence;
@@ -149,7 +149,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         this.startTransactionFragment(this.welcomeFragment);
     }
     private void showEmploiPage() {
-        Intent intent = new Intent(getApplicationContext(), userYearActivity.class);
+        Intent intent = new Intent(getApplicationContext(), YearActivity.class);
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
