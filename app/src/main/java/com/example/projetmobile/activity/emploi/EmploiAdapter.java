@@ -59,14 +59,16 @@ public class EmploiAdapter extends RecyclerView.Adapter<EmploiViewHolder> {
                                     String matiere = tabletimelist.get(position).getMatiere();
                                     String salle = tabletimelist.get(position).getSalle();
                                     String enseignet = tabletimelist.get(position).getEnseignant();
-                                    String horaire = tabletimelist.get(position).getHoraire();
+                                    String heuredebut = tabletimelist.get(position).getHeuredebut();
+                                    String heurefin = tabletimelist.get(position).getHeurefin();
                                     Intent intent = new Intent(context, DayDetailActivity.class);
                                     //put data in Intent
                                     intent.putExtra("uid", id);
                                     intent.putExtra("umatiere", matiere);
                                     intent.putExtra("usalle", salle);
                                     intent.putExtra("uenseignet", enseignet);
-                                    intent.putExtra("uhoraire", horaire);
+                                    intent.putExtra("heuredebut", heuredebut);
+                                    intent.putExtra("heurefin", heurefin);
                                     context.startActivity(intent);
 
                                 }
@@ -89,7 +91,7 @@ public class EmploiAdapter extends RecyclerView.Adapter<EmploiViewHolder> {
         holder.matiere.setText(tabletimelist.get(position).getMatiere());
         holder.enseignant.setText(tabletimelist.get(position).getEnseignant());
         holder.salle.setText(tabletimelist.get(position).getSalle());
-        holder.horaire.setText(tabletimelist.get(position).getHoraire());
+        holder.horaire.setText(tabletimelist.get(position).getHeuredebut()+"-"+tabletimelist.get(position).getHeurefin());
         holder.letterImageView.setOval(true);
         holder.letterImageView.setLetter(cours.get(position).charAt(0));
     }

@@ -6,15 +6,16 @@ import java.util.Comparator;
 public class Tabletime {
 
 
-    private String horaire, matiere, enseignant, salle, jour, année,id;
+    private String heuredebut,heurefin, matiere, enseignant, salle, jour, année,id;
 
 
     public Tabletime(){
 
     }
 
-    public Tabletime(String horaire, String matiere, String enseignant, String salle, String jour, String année, String id) {
-        this.horaire = horaire;
+    public Tabletime(String heuredebut, String heurefin, String matiere, String enseignant, String salle, String jour, String année, String id) {
+        this.heuredebut = heuredebut;
+        this.heurefin = heurefin;
         this.matiere = matiere;
         this.enseignant = enseignant;
         this.salle = salle;
@@ -23,14 +24,13 @@ public class Tabletime {
         this.id = id;
     }
 
+    public String getHeuredebut() { return heuredebut; }
 
-    public String getHoraire() {
-        return horaire;
-    }
+    public void setHeuredebut(String heuredebut) { this.heuredebut = heuredebut; }
 
-    public void setHoraire(String horaire) {
-        this.horaire = horaire;
-    }
+    public String getHeurefin() { return heurefin; }
+
+    public void setHeurefin(String heurefin) { this.heurefin = heurefin; }
 
     public String getMatiere() {
         return matiere;
@@ -79,7 +79,7 @@ public class Tabletime {
     public static  final Comparator<Tabletime> BY_HORAIRE = new Comparator<Tabletime>() {
         @Override
         public int compare(Tabletime o1, Tabletime o2) {
-            return o1.getHoraire().compareTo(o2.getHoraire());
+            return o2.getHeurefin().compareTo(o1.getHeuredebut());
         }
     };
 

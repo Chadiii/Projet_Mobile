@@ -52,7 +52,7 @@
         android:layout_below="@id/GestionProfbutton"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="30dp"
         android:background="@drawable/buttons"
         android:text="Gestion des Etudiants"
@@ -68,7 +68,7 @@
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:background="@drawable/buttons"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_below="@id/GestionEtudbutton"
         android:layout_centerHorizontal="true"
         android:text="Gestion Plan de Formation I.W.I.M" />
@@ -80,12 +80,12 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textStyle="bold"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/buttons"
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/white"
         android:layout_below="@id/AjoutPlanForm"
-        android:text="Ajouter un Emploi du temps" />
+        android:text="Gestion de l'Emploi du temps" />
 
     <Button
         android:id="@+id/datacentre"
@@ -96,8 +96,8 @@
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:background="@drawable/buttons"
-        android:layout_marginTop="70dp"
-        android:layout_below="@id/GestionEtudbutton"
+        android:layout_marginTop="15dp"
+        android:layout_below="@id/AjoutEmploi"
         android:layout_centerHorizontal="true"
         android:text="Gestion Datacentre I.W.I.M" />
 
@@ -109,10 +109,10 @@
         android:layout_marginRight="30dp"
         android:textStyle="bold"
         android:background="@drawable/buttons"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:textColor="@android:color/white"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/AjoutEmploi"
+        android:layout_below="@id/datacentre"
         android:text="Gestion d'Absence" />
 
     <Button
@@ -122,7 +122,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:textStyle="bold"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/buttons"
         android:textColor="@android:color/white"
         android:layout_centerHorizontal="true"

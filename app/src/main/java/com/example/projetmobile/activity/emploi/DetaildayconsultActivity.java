@@ -63,7 +63,7 @@ public class DetaildayconsultActivity extends AppCompatActivity {
                         Clear();
                         progressDialog.dismiss();
                         for (QueryDocumentSnapshot doc : task.getResult()) {
-                            Tabletime tabletime = new Tabletime(doc.getString("horaire"), doc.getString("matiere"),
+                            Tabletime tabletime = new Tabletime(doc.getString("heuredebut"),doc.getString("heurefin"), doc.getString("matiere"),
                                     doc.getString("enseignant"), doc.getString("salle"),
                                     doc.getString("jour"), doc.getString("année"), doc.getString("id"));
                             ChargementData(tabletime);
@@ -261,7 +261,7 @@ public class DetaildayconsultActivity extends AppCompatActivity {
                         Clear();
                         progressDialog.dismiss();
                         for (QueryDocumentSnapshot docc : task.getResult()) {
-                            Tabletime tab = new Tabletime(docc.getString("horaire"), docc.getString("matiere"),
+                            Tabletime tab = new Tabletime(docc.getString("heuredebut"),docc.getString("heurefin"), docc.getString("matiere"),
                                     docc.getString("enseignant"), docc.getString("salle"),
                                     docc.getString("jour"), docc.getString("année"), docc.getString("id"));
                             ChargementData(tab);
