@@ -89,6 +89,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "159005912334-j3g17nkak24kj3rr7a9h9q1cfednmht1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projetmobile",
+            "certificate_hash": "f0b93cd7583907271b6b8039c1c7b1029d0665cb"
+          }
+        },
+        {
           "client_id": "159005912334-haeoauli0f28gdh3f112i1rrn1a9jbi0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

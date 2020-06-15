@@ -1,7 +1,6 @@
-package com.example.projetmobile.activity.about;
+package com.example.projetmobile.activity.aboutUs;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.net.Uri;

@@ -28,8 +28,8 @@
 
             <item
                 android:id="@+id/nav_cours"
-                android:icon="@drawable/ic_view_agenda_black_24dp"
-                android:title="Cours" />
+                android:icon="@drawable/ic_library_books_black_24dp"
+                android:title="Datacentre I.W.I.M" />
             <item
                 android:id="@+id/nav_note"
                 android:icon="@drawable/ic_library_books_black_24dp"

@@ -1,10 +1,12 @@
 package com.example.projetmobile.model;
 import com.google.firebase.firestore.Exclude;
 
-public class Module {
+import java.io.Serializable;
 
+public class Module implements Serializable {
 
     @Exclude private String id;
+
 
     private String semestre, code, intitule;
     private int volume;
@@ -20,8 +22,13 @@ public class Module {
         this.volume = volume;
     }
 
+    public String getId() {
+        return id;
+    }
 
-    public void setId(String id) {this.id = id; }
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getSemestre() {
         return semestre;
@@ -36,9 +43,9 @@ public class Module {
     }
 
 
+
     public int getVolume() {
         return volume;
     }
 
 }
-

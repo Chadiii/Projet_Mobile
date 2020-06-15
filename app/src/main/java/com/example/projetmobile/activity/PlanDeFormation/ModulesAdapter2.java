@@ -15,12 +15,12 @@ import com.example.projetmobile.model.Module;
 
 import java.util.List;
 
-public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.ProductViewHolder> {
+public class ModulesAdapter2 extends RecyclerView.Adapter<ModulesAdapter2.ProductViewHolder> {
 
     private Context mCtx;
     private List<Module> moduleList;
 
-    public ModulesAdapter(Context mCtx, List<Module> modulelist) {
+    public ModulesAdapter2(Context mCtx, List<Module> modulelist) {
         this.mCtx = mCtx;
         this.moduleList = modulelist;
     }
@@ -68,10 +68,7 @@ public class ModulesAdapter extends RecyclerView.Adapter<ModulesAdapter.ProductV
         public void onClick(View v) {
 
 
-            Module module = moduleList.get(getAdapterPosition());
-            Intent intent = new Intent(mCtx, UpdateModuleActivity.class);
-            intent.putExtra("module", module);
-            mCtx.startActivity(intent);
+
         }
     }
 }

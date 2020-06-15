@@ -20,7 +20,6 @@
         <activity android:name=".activity.messagerie.MessageDetail" />
         <activity android:name=".activity.messagerie.NewMessage" />
         <activity android:name=".activity.pedagogie.Absence" />
-        <activity android:name=".activity.pedagogie.Cours" />
         <activity android:name=".activity.evenement.Event" />
         <activity android:name=".activity.messagerie.MessagerieHome" />
         <activity android:name=".activity.users.SettingsActivity" />
@@ -35,7 +34,11 @@
         <activity android:name=".activity.emploi.DetaildayconsultActivity" />
         <activity android:name=".activity.PlanDeFormation.MainActivity1" />
         <activity android:name=".activity.PlanDeFormation.ModulesActivity" />
-        <activity android:name=".activity.about.About" />
+        <activity android:name=".activity.PlanDeFormation.UpdateModuleActivity" />
+        <activity android:name=".activity.PlanDeFormation.ModulesActivity2" />
+
+
+        <activity android:name=".activity.aboutUs.About" />
 
         <activity android:name=".MainActivity">
             <intent-filter>

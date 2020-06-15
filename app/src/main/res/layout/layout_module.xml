@@ -27,6 +27,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="M4.1"
+                android:textColor="@color/black"
+                android:textStyle="italic"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -34,6 +36,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Test"
+                android:textColor="@color/black"
+                android:textStyle="italic"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
             <TextView
@@ -41,6 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Volume 56 Heures"
+                android:textColor="@color/red"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                 android:textStyle="bold" />
 
