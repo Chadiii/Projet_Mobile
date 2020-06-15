@@ -1,6 +1,7 @@
 package com.example.projetmobile.model;
 
 import java.text.SimpleDateFormat;
+import java.util.Comparator;
 
 public class Tabletime {
 
@@ -74,6 +75,13 @@ public class Tabletime {
     public String getId() { return id; }
 
     public void setId(String id) { this.id = id; }
+
+    public static  final Comparator<Tabletime> BY_HORAIRE = new Comparator<Tabletime>() {
+        @Override
+        public int compare(Tabletime o1, Tabletime o2) {
+            return o1.getHoraire().compareTo(o2.getHoraire());
+        }
+    };
 
 
 }

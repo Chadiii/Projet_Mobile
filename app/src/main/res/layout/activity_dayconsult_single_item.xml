@@ -36,7 +36,7 @@
             android:layout_below="@+id/tvonsultsingleitemsubject"
             android:layout_toRightOf="@+id/ivdayconsultsingleitem">
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvonsultsingleitemens"
                 android:textStyle="bold"
@@ -46,18 +46,18 @@
                 android:layout_weight="40"
                  />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvonsultsingleitemsalle"
                 android:textStyle="bold"
                 android:textSize="13sp"
                 android:textColor="@color/black"
                 android:gravity="center"
-                android:layout_weight="30"
+                android:layout_weight="40"
                 android:padding="20dp"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvonsultsingleitemtime"
                 android:textColor="@color/black"
