@@ -194,7 +194,7 @@
                         android:layout_marginTop="8dp"
                         android:baselineAligned="false"
                         android:fontFamily="@font/googlesans_bold"
-                        android:text="ATMANi Yassine"
+                        android:text="ATMANI Yassine"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 

@@ -56,19 +56,19 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
 
     private boolean hasValidationErrors(String semstre, String code, String intitule, String volume) {
         if (semstre.isEmpty()) {
-            editTextSemestre.setError("Name required");
+            editTextSemestre.setError("Semestre requis");
             editTextSemestre.requestFocus();
             return true;
         }
 
         if (code.isEmpty()) {
-            editTextCode.setError("Brand required");
+            editTextCode.setError("Code requis");
             editTextCode.requestFocus();
             return true;
         }
 
         if (intitule.isEmpty()) {
-            editTextIntitule.setError("Description required");
+            editTextIntitule.setError("Intitule requis");
             editTextIntitule.requestFocus();
             return true;
         }
@@ -76,7 +76,7 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
 
 
         if (volume.isEmpty()) {
-            editTextVolume.setError("Quantity required");
+            editTextVolume.setError("Volume requis");
             editTextVolume.requestFocus();
             return true;
         }
@@ -109,7 +109,7 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-                            Toast.makeText(UpdateModuleActivity.this, "Product Updated", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateModuleActivity.this, "Module mis à jour", Toast.LENGTH_LONG).show();
                         }
                     });
         }
@@ -121,7 +121,7 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(UpdateModuleActivity.this, "Product deleted", Toast.LENGTH_LONG).show();
+                            Toast.makeText(UpdateModuleActivity.this, "Module supprimé", Toast.LENGTH_LONG).show();
                             finish();
                             startActivity(new Intent(UpdateModuleActivity.this, ModulesActivity.class));
                         }

@@ -27,7 +27,7 @@
 
 
             <item
-                android:id="@+id/nav_cours"
+                android:id="@+id/nav_datacentre"
                 android:icon="@drawable/ic_library_books_black_24dp"
                 android:title="Datacentre I.W.I.M" />
             <item
