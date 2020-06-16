@@ -26,7 +26,7 @@
 
         <GridLayout
             android:layout_width="384dp"
-            android:layout_height="300dp"
+            android:layout_height="245dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:alignmentMode="alignMargins"
@@ -35,25 +35,30 @@
             android:rowCount="4">
 
 
+
+
             <androidx.cardview.widget.CardView
 
-                android:layout_width="370dp"
-                android:layout_height="288dp"
+                android:layout_width="170dp"
+                android:layout_height="235dp"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="5dp">
 
+
+
+
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="150dp"
+                    android:layout_height="189dp"
                     android:gravity="center"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="262dp"
+                        android:layout_width="170dp"
                         android:layout_height="150dp"
-
+                        android:layout_marginLeft="19dp"
                         android:clickable="true"
                         android:src="@drawable/arnaud" />
 
@@ -61,6 +66,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="8dp"
                         android:baselineAligned="false"
                         android:fontFamily="@font/googlesans_bold"
@@ -75,8 +81,8 @@
                     android:id="@+id/play2"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="180dp"
                     android:clickable="true"
                     android:src="@drawable/git" />
 
@@ -84,32 +90,17 @@
                     android:id="@+id/play1"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="95dp"
+                    android:layout_marginTop="180dp"
                     android:clickable="true"
                     android:src="@drawable/linkedin" />
 
             </androidx.cardview.widget.CardView>
 
-
-
-
-        </GridLayout>
-        <GridLayout
-            android:layout_width="384dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="4">
-
-
             <androidx.cardview.widget.CardView
 
-                android:layout_width="370dp"
-                android:layout_height="288dp"
+                android:layout_width="170dp"
+                android:layout_height="237dp"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="12dp"
@@ -122,151 +113,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="262dp"
-                        android:layout_height="150dp"
-
-                        android:clickable="true"
-                        android:src="@drawable/yassinee" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="41dp"
-                        android:layout_marginTop="8dp"
-                        android:baselineAligned="false"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="ATMANI Yassine"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/play4"
-                    android:layout_width="55dp"
-                    android:layout_height="46dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="230dp"
-                    android:clickable="true"
-                    android:src="@drawable/git" />
-
-                <ImageView
-                    android:id="@+id/play3"
-                    android:layout_width="55dp"
-                    android:layout_height="46dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="230dp"
-                    android:clickable="true"
-                    android:src="@drawable/linkedin" />
-
-            </androidx.cardview.widget.CardView>
-
-
-
-
-        </GridLayout>
-        <GridLayout
-            android:layout_width="384dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="4">
-
-
-            <androidx.cardview.widget.CardView
-
-                android:layout_width="370dp"
-                android:layout_height="288dp"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/gray"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="262dp"
-                        android:layout_height="150dp"
-
-                        android:clickable="true"
-                        android:src="@drawable/zakarya" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="41dp"
-                        android:layout_marginTop="8dp"
-                        android:baselineAligned="false"
-                        android:fontFamily="@font/googlesans_bold"
-                        android:text="ZAITAR Zakarya"
-                        android:textColor="@color/white"
-                        android:textSize="18sp" />
-
-
-                </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/play6"
-                    android:layout_width="55dp"
-                    android:layout_height="46dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="230dp"
-                    android:clickable="true"
-                    android:src="@drawable/git" />
-
-                <ImageView
-                    android:id="@+id/play5"
-                    android:layout_width="55dp"
-                    android:layout_height="46dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="230dp"
-                    android:clickable="true"
-                    android:src="@drawable/linkedin" />
-
-            </androidx.cardview.widget.CardView>
-
-
-
-
-        </GridLayout>
-        <GridLayout
-            android:layout_width="384dp"
-            android:layout_height="300dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="5dp"
-            android:alignmentMode="alignMargins"
-            android:columnCount="2"
-            android:columnOrderPreserved="false"
-            android:rowCount="4">
-
-
-            <androidx.cardview.widget.CardView
-
-                android:layout_width="370dp"
-                android:layout_height="288dp"
-                android:layout_margin="10dp"
-                app:cardBackgroundColor="@color/gray"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="5dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="262dp"
-                        android:layout_height="150dp"
-
+                        android:layout_width="170dp"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="-40dp"
                         android:clickable="true"
                         android:src="@drawable/chaadi" />
 
@@ -288,8 +137,8 @@
                     android:id="@+id/play8"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="180dp"
                     android:clickable="true"
                     android:src="@drawable/git" />
 
@@ -297,20 +146,17 @@
                     android:id="@+id/play7"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="180dp"
                     android:clickable="true"
                     android:src="@drawable/linkedin" />
 
             </androidx.cardview.widget.CardView>
-
-
-
-
         </GridLayout>
+
         <GridLayout
             android:layout_width="384dp"
-            android:layout_height="300dp"
+            android:layout_height="289dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:alignmentMode="alignMargins"
@@ -321,8 +167,66 @@
 
             <androidx.cardview.widget.CardView
 
-                android:layout_width="370dp"
-                android:layout_height="288dp"
+                android:layout_width="171dp"
+                android:layout_height="255dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="191dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="174dp"
+                        android:layout_height="135dp"
+
+                        android:clickable="true"
+                        android:src="@drawable/yassinee" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:baselineAligned="false"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="ATMANi Yassine"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/play3"
+                    android:layout_width="55dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="190dp"
+                    android:clickable="true"
+                    android:src="@drawable/linkedin" />
+
+                <ImageView
+                    android:id="@+id/play4"
+                    android:layout_width="50dp"
+                    android:layout_height="46dp"
+                    android:layout_row="0"
+                    android:layout_column="0"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="190dp"
+                    android:clickable="true"
+                    android:src="@drawable/git" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="170dp"
+                android:layout_height="250dp"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="12dp"
@@ -335,11 +239,11 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="262dp"
-                        android:layout_height="150dp"
-
+                        android:layout_width="170dp"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="-40dp"
                         android:clickable="true"
-                        android:src="@drawable/linkedin" />
+                        android:src="@drawable/zakarya" />
 
 
                     <TextView
@@ -348,7 +252,7 @@
                         android:layout_marginTop="8dp"
                         android:baselineAligned="false"
                         android:fontFamily="@font/googlesans_bold"
-                        android:text="EL MENNANI Hiba"
+                        android:text="ZAITAR Zakarya"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -356,32 +260,29 @@
                 </LinearLayout>
 
                 <ImageView
-                    android:id="@+id/play10"
+                    android:id="@+id/play6"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="190dp"
                     android:clickable="true"
                     android:src="@drawable/git" />
 
                 <ImageView
-                    android:id="@+id/play9"
+                    android:id="@+id/play5"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="190dp"
                     android:clickable="true"
                     android:src="@drawable/linkedin" />
 
             </androidx.cardview.widget.CardView>
 
-
-
-
         </GridLayout>
         <GridLayout
             android:layout_width="384dp"
-            android:layout_height="300dp"
+            android:layout_height="245dp"
             android:layout_gravity="center_horizontal"
             android:layout_margin="5dp"
             android:alignmentMode="alignMargins"
@@ -390,10 +291,72 @@
             android:rowCount="4">
 
 
+
+
             <androidx.cardview.widget.CardView
 
-                android:layout_width="370dp"
-                android:layout_height="288dp"
+                android:layout_width="170dp"
+                android:layout_height="235dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/gray"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="5dp">
+
+
+
+
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="189dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="130dp"
+                        android:layout_marginLeft="19dp"
+                        android:clickable="true"
+                        android:src="@drawable/linkedin" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="41dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="8dp"
+                        android:baselineAligned="false"
+                        android:fontFamily="@font/googlesans_bold"
+                        android:text="EL MANNANI hiba"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/play10"
+                    android:layout_width="55dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="180dp"
+                    android:clickable="true"
+                    android:src="@drawable/git" />
+
+                <ImageView
+                    android:id="@+id/play9"
+                    android:layout_width="55dp"
+                    android:layout_height="46dp"
+                    android:layout_marginLeft="95dp"
+                    android:layout_marginTop="180dp"
+                    android:clickable="true"
+                    android:src="@drawable/linkedin" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+
+                android:layout_width="170dp"
+                android:layout_height="237dp"
                 android:layout_margin="10dp"
                 app:cardBackgroundColor="@color/gray"
                 app:cardCornerRadius="12dp"
@@ -406,9 +369,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="262dp"
-                        android:layout_height="150dp"
-
+                        android:layout_width="170dp"
+                        android:layout_height="140dp"
+                        android:layout_marginTop="-40dp"
                         android:clickable="true"
                         android:src="@drawable/lokmane" />
 
@@ -430,8 +393,8 @@
                     android:id="@+id/play12"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="200dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="180dp"
                     android:clickable="true"
                     android:src="@drawable/git" />
 
@@ -439,31 +402,12 @@
                     android:id="@+id/play11"
                     android:layout_width="55dp"
                     android:layout_height="46dp"
-                    android:layout_marginLeft="115dp"
-                    android:layout_marginTop="230dp"
+                    android:layout_marginLeft="90dp"
+                    android:layout_marginTop="180dp"
                     android:clickable="true"
                     android:src="@drawable/linkedin" />
 
             </androidx.cardview.widget.CardView>
-
-
-
-
         </GridLayout>
-
-
-
-
-
-
-
-
-
-
-
     </LinearLayout>
-
-
-
-
 </ScrollView>
