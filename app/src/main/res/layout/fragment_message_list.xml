@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list"
+    android:name="com.example.projetmobile.activity.messagerie.MessageFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutManager="LinearLayoutManager"
+    tools:context=".activity.messagerie.MessageFragment">
+
+
+<LinearLayout
+    android:id="@+id/message_list_progress_bar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="visible">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTintMode="multiply"
+        android:indeterminateTint="@color/colorPrimaryDark"/>
+</LinearLayout>
+
+<LinearLayout
+    android:id="@+id/empty_box_group"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:id="@+id/empty_box_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"/>
+    <ImageView
+        android:id="@+id/empty_box_image"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/empty_box" />
+
+</LinearLayout>
+
+
+<ListView
+    android:id="@+id/lv_messages_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    />
+
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fab_new_message"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="@dimen/fab_margin"
+    android:backgroundTint="@color/colorPrimaryDark"
+    android:background="@color/colorPrimaryDark"
+    app:backgroundTint="@color/colorPrimaryDark"
+    app:srcCompat="@drawable/ic_mode_edit_black_24dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

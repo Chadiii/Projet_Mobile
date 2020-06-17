@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item
+        android:id="@+id/nav_new_received_message"
+        android:icon="@drawable/ic_email_black_24dp"
+        android:title="Nouveaux messages" />
+    <item
+        android:id="@+id/nav_received_message"
+        android:icon="@drawable/ic_move_to_inbox_black_24dp"
+        android:title="Boite de réception" />
+    <item
+        android:id="@+id/nav_sent_message"
+        android:icon="@drawable/ic_menu_send"
+        android:title="Boite d'envoie" />
+
+</menu>

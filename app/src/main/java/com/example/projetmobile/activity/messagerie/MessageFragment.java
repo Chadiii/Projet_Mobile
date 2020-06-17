@@ -1,18 +1,19 @@
 package com.example.projetmobile.activity.messagerie;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import android.util.Log;
-import android.view.MenuItem;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.projetmobile.R;
 import com.example.projetmobile.model.Message;
@@ -30,49 +31,76 @@ import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class MessageList extends AppCompatActivity {
+
+public class MessageFragment extends Fragment {
+
+    // TODO: Customize parameter argument names
+    private static final String ARG_COLUMN_COUNT = "column-count";
+    // TODO: Customize parameters
+    private int mColumnCount = 1;
     private String mode; //messageSent or messageReceived
-//    private ProgressDialog loadingBar;
+    //    private ProgressDialog loadingBar;
     private ArrayList<Message> arrayOfMessages;
     private MessageAdapter adapter;
     private ListView listView;
     private LinearLayout emptyGroup;
     private LinearLayout progressBar;
     private TextView emptyText;
+    private MessagerieHome activity;
+
+
+    public MessageFragment() {
+    }
+
+    // TODO: Customize parameter initialization
+    @SuppressWarnings("unused")
+    public static MessageFragment newInstance() {
+        MessageFragment fragment = new MessageFragment();
+        return fragment;
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_message_list);
+    }
 
-        Intent i = getIntent();
-        mode = (String) i.getSerializableExtra("mode");
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_message_list, container, false);
 
-        progressBar = findViewById(R.id.message_list_progress_bar);
-        emptyGroup = findViewById(R.id.empty_box_group);
-        emptyText = findViewById(R.id.empty_box_text);
+        activity = (MessagerieHome) getActivity();
+        mode = activity.getMode();
 
-        FloatingActionButton fab = findViewById(R.id.fab_new_message);
+        progressBar = view.findViewById(R.id.message_list_progress_bar);
+        emptyGroup = view.findViewById(R.id.empty_box_group);
+        emptyText = view.findViewById(R.id.empty_box_text);
+
+        FloatingActionButton fab = view.findViewById(R.id.fab_new_message);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NewMessage.class);
+                Intent intent = new Intent(view.getContext(), NewMessage.class);
                 startActivity(intent);
             }
         });
 
-        adapter = new MessageAdapter(this, arrayOfMessages);
-        listView =  findViewById(R.id.lv_messages_list);
 
-//        loadingBar = new ProgressDialog(this);
-//        loadingBar.setCanceledOnTouchOutside(false);
-//        loadingBar.show();
+        listView =  view.findViewById(R.id.lv_messages_list);
 
-        if (mode.compareTo("messageReceived")==0)
-            searchReceivedMessages();
-        else
+        if (mode.compareTo("messageSent")==0){
+            adapter = new MessageAdapter(view.getContext(), arrayOfMessages, true);
             searchSentMessages();
+        }
+        else{
+            adapter = new MessageAdapter(view.getContext(), arrayOfMessages, false);
+            searchReceivedMessages();
+        }
+
+
+        return view;
     }
+
 
     public void searchReceivedMessages(){
         arrayOfMessages = new ArrayList<>();
@@ -90,23 +118,38 @@ public class MessageList extends AppCompatActivity {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
                                 Map<String, Object> messageData = document.getData();
                                 dest = (Map<String, Object>) messageData.get("destinataires");
-                                arrayOfMessages.add(new Message(
-                                        document.getId(),
-                                        (String)messageData.get("objet"),
-                                        (String)messageData.get("emetteur"),
-                                        (String)messageData.get("contenu"),
-                                        dest,
-                                        (Boolean) dest.get("vue"),
-                                        (String)messageData.get("date")));
+                                Boolean vue = (Boolean) dest.get("vue");
+                                if(mode.compareTo("messageNewReceived")==0 && !vue)
+                                    arrayOfMessages.add(new Message(
+                                            document.getId(),
+                                            (String)messageData.get("objet"),
+                                            (String)messageData.get("emetteur"),
+                                            (String)messageData.get("contenu"),
+                                            dest,
+                                            (Boolean) dest.get("vue"),
+                                            (String)messageData.get("date")));
+                                else if(mode.compareTo("messageReceived")==0 && vue)
+                                    arrayOfMessages.add(new Message(
+                                            document.getId(),
+                                            (String)messageData.get("objet"),
+                                            (String)messageData.get("emetteur"),
+                                            (String)messageData.get("contenu"),
+                                            dest,
+                                            (Boolean) dest.get("vue"),
+                                            (String)messageData.get("date")));
 
                             }
+                            activity.setMessagesNumber(arrayOfMessages.size());
                             if(arrayOfMessages.size()==0){
-                                emptyText.setText("Aucun message reçu");
+                                if(mode.compareTo("messageNewReceived")==0)
+                                    emptyText.setText("Aucun nouveau message");
+                                else
+                                    emptyText.setText("Aucun message");
                                 emptyGroup.setVisibility(View.VISIBLE);
                             }
                             else{
                                 Collections.sort(arrayOfMessages, Collections.reverseOrder());
-                                adapter = new MessageAdapter(adapter.context, arrayOfMessages);
+                                adapter = new MessageAdapter(adapter.context, arrayOfMessages, false);
                                 listView.setAdapter(adapter);
                             }
                             progressBar.setVisibility(View.GONE);
@@ -145,13 +188,14 @@ public class MessageList extends AppCompatActivity {
                                         (Boolean) dest.get("vue"),
                                         (String)messageData.get("date")));
                             }
+                            activity.setMessagesNumber(arrayOfMessages.size());
                             if(arrayOfMessages.size()==0) {
                                 emptyText.setText("Aucun message envoyé");
                                 emptyGroup.setVisibility(View.VISIBLE);
                             }
                             else{
                                 Collections.sort(arrayOfMessages, Collections.reverseOrder());
-                                adapter = new MessageAdapter(adapter.context, arrayOfMessages);
+                                adapter = new MessageAdapter(adapter.context, arrayOfMessages, true);
                                 listView.setAdapter(adapter);
                             }
                             progressBar.setVisibility(View.GONE);

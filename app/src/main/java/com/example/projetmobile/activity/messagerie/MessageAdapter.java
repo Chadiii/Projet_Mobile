@@ -15,15 +15,19 @@ import androidx.annotation.ColorInt;
 import com.example.projetmobile.R;
 import com.example.projetmobile.model.Message;
 import com.example.projetmobile.model.Users;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 
 public class MessageAdapter extends ArrayAdapter<Message> {
     Context context;
+    Boolean isSent;
+    FirebaseFirestore db;
 
-    public MessageAdapter(Context context, ArrayList<Message> messages) {
+    public MessageAdapter(Context context, ArrayList<Message> messages, Boolean isSent) {
         super(context, 0, messages);
         this.context = context;
+        this.isSent = isSent;
     }
 
     @Override
@@ -57,21 +61,34 @@ public class MessageAdapter extends ArrayAdapter<Message> {
 
 
         //new message unseen
-        if (!message.hasSeen){
+        if (!this.isSent && !message.hasSeen){
             LinearLayout myMessage = convertView.findViewById(R.id.message_item);
             myMessage.setBackgroundColor(0xFFDDDDDD);
             object.setTypeface(null, Typeface.BOLD);
             sender.setTypeface(null, Typeface.BOLD);
+
+            db = FirebaseFirestore.getInstance();
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, MessageDetail.class);
+                    intent.putExtra("message", message);
+                    context.startActivity(intent);
+                    db.collection("Messages").document(message.id).update("destinataires.vue",true);
+                }
+            });
+        }
+        else{
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, MessageDetail.class);
+                    intent.putExtra("message", message);
+                    context.startActivity(intent);
+                }
+            });
         }
 
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, MessageDetail.class);
-                intent.putExtra("message", message);
-                context.startActivity(intent);
-            }
-        });
         return convertView;
     }
 }
