@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@drawable/datacentre"
+
+
+    tools:context=".activity.Datacentre.CoursChefFilere">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:src="@drawable/applogo"
+
+        >
+
+
+    </ImageView>
+
+
+    <EditText
+        android:id="@+id/txt_pdfName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:hint="Entrer le nom du PDF à partager"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:textSize="22dp" />
+
+    <Button
+        android:id="@+id/btn_upload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttons"
+        android:text="Partager un fichier dans DATACENTRE?"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/btn_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttons"
+        android:onClick="btn_action"
+        android:text="Voir DATACENTRE I.W.I.M"
+        android:textColor="#ffffff" />
+
+    <Button
+        android:id="@+id/btn_supprimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/buttons"
+        android:onClick="btn_action1"
+        android:text="Gérer DATACENTRE"
+        android:textColor="#ffffff" />
+
+
+
+</LinearLayout>

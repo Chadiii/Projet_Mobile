@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.Datacentre.Cours;
 import com.example.projetmobile.activity.PlanDeFormation.ModulesActivity2;
 import com.example.projetmobile.activity.aboutUs.About;
 import com.example.projetmobile.activity.emploi.YearActivity;
@@ -84,8 +85,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_plandeformation :
                 this.showPlandeformation();
                 break;
-            case R.id.nav_cours :
-                this.showCoursPage();
+            case R.id.nav_datacentre :
+                this.showDatacentrePage();
                 break;
             case R.id.nav_note :
                 this.showNotePage();
@@ -171,9 +172,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
-    private void showCoursPage(){
-
-
+    private void showDatacentrePage(){
+        Intent intent = new Intent(getApplicationContext(), Cours.class);
+        startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
     private void showNotePage(){
