@@ -36,6 +36,11 @@
         <activity android:name=".activity.PlanDeFormation.ModulesActivity" />
         <activity android:name=".activity.PlanDeFormation.UpdateModuleActivity" />
         <activity android:name=".activity.PlanDeFormation.ModulesActivity2" />
+        <activity android:name=".activity.Datacentre.Cours" />
+        <activity android:name=".activity.Datacentre.View_PDF_Files" />
+        <activity android:name=".activity.Datacentre.CoursChefFilere" />
+        <activity android:name=".activity.Datacentre.PostListActivity" />
+        <activity android:name=".activity.Datacentre.AddPostActivity" />
 
 
         <activity android:name=".activity.aboutUs.About" />
