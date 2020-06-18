@@ -142,9 +142,9 @@ public class MessageFragment extends Fragment {
                             activity.setMessagesNumber(arrayOfMessages.size());
                             if(arrayOfMessages.size()==0){
                                 if(mode.compareTo("messageNewReceived")==0)
-                                    emptyText.setText("Aucun nouveau message");
+                                    emptyText.setText("Aucun message non lu");
                                 else
-                                    emptyText.setText("Aucun message");
+                                    emptyText.setText("Aucun message recu");
                                 emptyGroup.setVisibility(View.VISIBLE);
                             }
                             else{

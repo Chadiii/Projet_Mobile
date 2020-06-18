@@ -95,7 +95,7 @@ public class MessagerieHome extends AppCompatActivity implements NavigationView.
     }
 
     public void setMessagesNumber(int nb){
-        String title = "Nouveaux messages";
+        String title = "Messages non lus";
         switch (mode){
             case "messageSent" :
                 title = "Boite d'envoie";
@@ -166,7 +166,7 @@ public class MessagerieHome extends AppCompatActivity implements NavigationView.
 
     private void showNewReceivedFragment(){
         this.mode = "messageNewReceived";
-        this.toolbar.setTitle("Nouveaux messages");
+        this.toolbar.setTitle("Messages non lus");
         this.currentFragment = MessageFragment.newInstance();
         this.startTransactionFragment(this.currentFragment);
     }
