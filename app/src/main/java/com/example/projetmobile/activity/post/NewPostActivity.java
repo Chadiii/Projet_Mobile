@@ -1,4 +1,4 @@
-package com.example.projetmobile.activity.authentication;
+package com.example.projetmobile.activity.post;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,7 +24,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewPost extends AppCompatActivity {
+public class NewPostActivity extends AppCompatActivity {
     private TextView newPostContent;
     private CheckBox newPostToTeacher;
     private CheckBox newPostToStudent1;

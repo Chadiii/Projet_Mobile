@@ -1,4 +1,4 @@
-package com.example.projetmobile.activity.authentication;
+package com.example.projetmobile.activity.post;
 
 
 import android.content.Context;

@@ -1,4 +1,4 @@
-package com.example.projetmobile.activity.authentication;
+package com.example.projetmobile.activity.post;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +27,7 @@ import java.util.Map;
 
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
-public class WelcomeFragment extends Fragment {
+public class PostFragment extends Fragment {
     private ArrayList<Post> arrayOfPosts;
     private PostAdapter adapter;
     private ListView listView;
@@ -35,12 +35,12 @@ public class WelcomeFragment extends Fragment {
     private LinearLayout progressBar;
     private TextView emptyText;
     private Button newPostButton;
-    public WelcomeFragment() {
+    public PostFragment() {
         // Required empty public constructor
     }
 
-    public static WelcomeFragment newInstance() {
-        return (new WelcomeFragment());
+    public static PostFragment newInstance() {
+        return (new PostFragment());
     }
 
     @Override
@@ -57,7 +57,7 @@ public class WelcomeFragment extends Fragment {
         newPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), NewPost.class);
+                Intent intent = new Intent(view.getContext(), NewPostActivity.class);
                 startActivity(intent);
             }
         });

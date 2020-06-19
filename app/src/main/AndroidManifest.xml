@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.authentication.NewPost"></activity>
+        <activity android:name=".activity.post.NewPostActivity"></activity>
         <activity android:name=".activity.chefdefiliere.listEtudiantActivity" />
         <activity android:name=".activity.chefdefiliere.GestionEtudiantActivity" />
         <activity android:name=".activity.chefdefiliere.listProfesseurActivity" />

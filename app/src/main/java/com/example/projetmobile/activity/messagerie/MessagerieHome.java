@@ -6,23 +6,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.projetmobile.R;
-import com.example.projetmobile.activity.PlanDeFormation.ModulesActivity2;
-import com.example.projetmobile.activity.aboutUs.About;
-import com.example.projetmobile.activity.authentication.LoginActivity;
-import com.example.projetmobile.activity.authentication.WelcomeFragment;
-import com.example.projetmobile.activity.emploi.YearActivity;
-import com.example.projetmobile.activity.evenement.Event;
-import com.example.projetmobile.activity.pedagogie.Absence;
-import com.example.projetmobile.activity.users.SettingsActivity;
-import com.example.projetmobile.model.Users;
 import com.google.android.material.navigation.NavigationView;
 
 public class MessagerieHome extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

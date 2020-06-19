@@ -21,6 +21,7 @@ import com.example.projetmobile.activity.emploi.YearActivity;
 import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
 import com.example.projetmobile.activity.pedagogie.Absence;
+import com.example.projetmobile.activity.post.PostFragment;
 import com.example.projetmobile.activity.users.SettingsActivity;
 import com.example.projetmobile.model.Users;
 import com.google.android.material.navigation.NavigationView;
@@ -69,7 +70,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void onResume()
     {
         super.onResume();
-        this.welcomeFragment = WelcomeFragment.newInstance();
+        this.welcomeFragment = PostFragment.newInstance();
         refresh();
     }
 
@@ -159,7 +160,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
 
     private void showHomeFragment(){
-        if (this.welcomeFragment == null) this.welcomeFragment = WelcomeFragment.newInstance();
+        if (this.welcomeFragment == null) this.welcomeFragment = PostFragment.newInstance();
         this.startTransactionFragment(this.welcomeFragment);
     }
     private void showEmploiPage() {
