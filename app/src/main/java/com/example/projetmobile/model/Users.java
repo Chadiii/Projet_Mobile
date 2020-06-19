@@ -6,6 +6,7 @@ public class Users implements Serializable {
     private static Users currentUser;
 
     private String email, login, nom, prenom, password, type, telephone, role;
+    public int level;
 
     public Users(){
 
@@ -19,14 +20,23 @@ public class Users implements Serializable {
         this.role = role;
     }
 
-    public Users(String email, String login, String nom, String prenom, String password, String type) {
+    public Users(String email, String nom, String prenom, String telephone, String role, int level){
+        this.email = email;
+        this.telephone = telephone;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.role = role;
+        this.level = level;
+    }
+
+    /*public Users(String email, String login, String nom, String prenom, String password, String type) {
         this.email = email;
         this.login = login;
         this.nom = nom;
         this.prenom = prenom;
         this.password = password;
         this.type = type;
-    }
+    }*/
 
     static public Users getCurrentUser() {
         return currentUser;

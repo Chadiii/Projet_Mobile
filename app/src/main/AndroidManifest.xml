@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.projetmobile">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
@@ -11,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.chefdefiliere.listEtudiantActivity"></activity>
+        <activity android:name=".activity.authentication.NewPost"></activity>
+        <activity android:name=".activity.chefdefiliere.listEtudiantActivity" />
         <activity android:name=".activity.chefdefiliere.GestionEtudiantActivity" />
         <activity android:name=".activity.chefdefiliere.listProfesseurActivity" />
         <activity android:name=".activity.chefdefiliere.GestionProfesseurActivity" />
@@ -41,10 +44,7 @@
         <activity android:name=".activity.Datacentre.CoursChefFilere" />
         <activity android:name=".activity.Datacentre.PostListActivity" />
         <activity android:name=".activity.Datacentre.AddPostActivity" />
-
-
         <activity android:name=".activity.aboutUs.About" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

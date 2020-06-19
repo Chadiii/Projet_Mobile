@@ -54,7 +54,9 @@ tools:context=".activity.messagerie.NewMessage">
                 android:layout_height="wrap_content"
                 android:gravity="top|left"
                 android:maxLines="10"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textCursorDrawable="@null"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -66,7 +68,9 @@ tools:context=".activity.messagerie.NewMessage">
                 android:layout_height="wrap_content"
                 android:gravity="top|left"
                 android:maxLines="10"
-                android:scrollbars="vertical"/>
+                android:scrollbars="vertical"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textCursorDrawable="@null"/>
         </LinearLayout>
 
         <LinearLayout
@@ -90,7 +94,9 @@ tools:context=".activity.messagerie.NewMessage">
                 android:lines="8"
                 android:minLines="6"
                 android:maxLines="10"
-                android:scrollbars="vertical" />
+                android:scrollbars="vertical"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:textCursorDrawable="@null"/>
         </LinearLayout>
 
         <Button

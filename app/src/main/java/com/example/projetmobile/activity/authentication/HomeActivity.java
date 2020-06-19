@@ -65,6 +65,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        this.welcomeFragment = WelcomeFragment.newInstance();
+        refresh();
+    }
+
+    public void refresh(){
+        this.startTransactionFragment(this.welcomeFragment);
+    }
+
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -123,6 +135,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void configureToolBar(){
         this.toolbar = (Toolbar) findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
+        this.toolbar.setTitle("Bienvenue "+Users.getCurrentUser().displayName());
     }
 
     // 2 - Configure Drawer Layout
