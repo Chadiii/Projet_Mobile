@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ////////////////////////////////////////// for test
         //email = "test@iwim.com"; password = "testtest";
-        email = "arnaud@iwim.com"; password = "123456";
+        //email = "ma@iwim.com"; password = "123456";
         /////////////////////////////////////////
 
         if(TextUtils.isEmpty(password)){
@@ -121,9 +121,13 @@ public class LoginActivity extends AppCompatActivity {
                                                     String userPrenom = (String) userData.get("prenom");
                                                     String userPhone = (String) userData.get("telephone");
                                                     String role = (String) userData.get("role");
-                                                    long levell = (long) (userData.get("level")==null?new Long(1):userData.get("level"));
-                                                    int level = (int)levell;
-                                                    if(level>3 || level<1) level = 1;
+                                                    int level;
+                                                    if(role.compareTo("Professeur")==0) level = 0;
+                                                    else{
+                                                        long levell = (long) (userData.get("level")==null?new Long(1):userData.get("level"));
+                                                        level = (int)levell;
+                                                        if(level>3 || level<1) level = 1;
+                                                    }
                                                     Log.d("data", userEmail+" "+userNom+" "+userPrenom+" "+userPhone+" "+level);
                                                     Users currentUser = new Users(userEmail, userNom, userPrenom, userPhone, role, level);
                                                     Users.setCurrentUser(currentUser);

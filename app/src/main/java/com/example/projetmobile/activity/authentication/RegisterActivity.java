@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button CreateAccountButton;
     private EditText InputPrenom, InputNom, InputPassword, InputConfirmPassword, InputEmail, InputTelephone;
     private ProgressDialog loadingBar;
-    private RadioGroup radioGroupRole;
+    private RadioGroup radioGroupRole, radioGroupLevel;
 
     private FirebaseAuth mAuth;
 
@@ -57,6 +57,21 @@ public class RegisterActivity extends AppCompatActivity {
         InputPassword = (EditText) findViewById(R.id.register_password_input);
         InputConfirmPassword = (EditText) findViewById(R.id.register_confirm_password_input);
         radioGroupRole = findViewById(R.id.register_role_buttonGroup);
+        radioGroupLevel = findViewById(R.id.register_student_level_buttonGroup);
+
+        radioGroupRole.setOnCheckedChangeListener(
+                new RadioGroup.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                        if(radioGroup.getCheckedRadioButtonId()==R.id.register_role_student){
+                            radioGroupLevel.setVisibility(View.VISIBLE);
+                        }
+                        else{
+                            radioGroupLevel.setVisibility(View.GONE);
+                        }
+                    }
+                }
+        );
 
         loadingBar = new ProgressDialog(this);
 
@@ -71,6 +86,12 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = InputPassword.getText().toString();
                 String confirmPassword = InputConfirmPassword.getText().toString();
                 String role = (radioGroupRole.getCheckedRadioButtonId()==R.id.register_role_student)?"Elève":"Professeur";
+                int level = 0;
+                if(role.compareTo("Elève")==0){
+                    if(radioGroupLevel.getCheckedRadioButtonId()==R.id.register_student_level_1) level = 1;
+                    else if(radioGroupLevel.getCheckedRadioButtonId()==R.id.register_student_level_2) level = 2;
+                    else level = 3;
+                }
 
 
 
@@ -101,7 +122,7 @@ public class RegisterActivity extends AppCompatActivity {
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
-                    ValidateLogin(email, nom, prenom, telephone, password, role);
+                    ValidateLogin(email, nom, prenom, telephone, password, role, level);
                 }
             }
         });
@@ -109,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void ValidateLogin(final String email, final String nom, final String prenom, final String telephone,final String password, final String role) {
+    private void ValidateLogin(final String email, final String nom, final String prenom, final String telephone,final String password, final String role, final int level) {
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -127,6 +148,7 @@ public class RegisterActivity extends AppCompatActivity {
                             userData.put("prenom", prenom);
                             userData.put("telephone", telephone);
                             userData.put("role", role);
+                            if(level!=0) userData.put("level", level);
 
                             db.collection("Users").document(user.getUid())
                                     .set(userData)

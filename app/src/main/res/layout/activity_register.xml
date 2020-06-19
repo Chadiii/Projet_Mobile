@@ -187,12 +187,61 @@
         </RadioGroup>
 
 
+        <RadioGroup
+            android:id="@+id/register_student_level_buttonGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/register_role_buttonGroup"
+            android:background="@drawable/input_design"
+            android:padding="20dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="6dp">
+
+            <RadioButton
+                android:id="@+id/register_student_level_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorPrimaryDark"
+                android:buttonTint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:checked="true"
+                android:text="1A" />
+
+            <RadioButton
+                android:id="@+id/register_student_level_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorPrimaryDark"
+                android:buttonTint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="2A" />
+
+            <RadioButton
+                android:id="@+id/register_student_level_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:textColor="@color/colorPrimaryDark"
+                android:buttonTint="@color/colorPrimaryDark"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="3A" />
+
+        </RadioGroup>
+
+
         <Button
             android:id="@+id/register_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:layout_below="@+id/register_role_buttonGroup"
+            android:layout_below="@+id/register_student_level_buttonGroup"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:background="@drawable/buttons"
