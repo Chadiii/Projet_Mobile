@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.post.NewPostActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -118,6 +119,9 @@ public class AddPostActivity extends AppCompatActivity {
                 Log.i("jfbvkj", "onSuccess: ");
             }
         });
+        NewPostActivity.datacentreAsPost(author.getText().toString());
+
+
     }
 
     private void init() {
