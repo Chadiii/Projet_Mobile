@@ -119,6 +119,7 @@ public class NewPostActivity extends AppCompatActivity {
     }
 
     public static void datacentreAsPost(String fileName){
+        Log.d("data", "datacentreAsPost file: "+fileName);
         String content = Users.getCurrentUser().displayName()+" a ajouté le fichier <"+fileName+"> dans le datacentre.";
         Boolean toStudent1 = false, toStudent2 = false, toStudent3 = false;
         if(Users.getCurrentUser().getRole().compareTo("Professeur")==0){

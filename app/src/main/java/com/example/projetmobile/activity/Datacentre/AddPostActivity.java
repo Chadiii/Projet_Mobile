@@ -119,7 +119,7 @@ public class AddPostActivity extends AppCompatActivity {
                 Log.i("jfbvkj", "onSuccess: ");
             }
         });
-        NewPostActivity.datacentreAsPost(author.getText().toString());
+        //NewPostActivity.datacentreAsPost(author.getText().toString());
 
 
     }

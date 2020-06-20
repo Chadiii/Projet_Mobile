@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.post.NewPostActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -120,6 +122,8 @@ public class Cours extends AppCompatActivity {
 
                         uploadPDF uploadPDF = new uploadPDF(editPDFName.getText().toString(),url.toString());
                         databaseReference.child(databaseReference.push().getKey()).setValue(uploadPDF);
+                        NewPostActivity.datacentreAsPost(uploadPDF.name);
+
                         Toast.makeText(Cours.this,"File Uploaded",Toast.LENGTH_SHORT);
                         progressDialog.dismiss();
 
