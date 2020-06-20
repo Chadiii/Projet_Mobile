@@ -22,7 +22,7 @@
         android:layout_height="100dp"
         android:src="@drawable/applogo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="150dp"
         />
 
     <Button
@@ -30,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_applogo"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:background="@drawable/buttons"
@@ -45,7 +45,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@+id/Second_Year_btn"
-    android:layout_marginTop="40dp"
+    android:layout_marginTop="20dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     android:background="@drawable/buttons"

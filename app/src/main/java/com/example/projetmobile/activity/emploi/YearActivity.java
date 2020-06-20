@@ -3,6 +3,7 @@ package com.example.projetmobile.activity.emploi;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -29,21 +30,28 @@ public class YearActivity extends AppCompatActivity {
         setupUIViews();
         initToolbar();
         user = Users.getCurrentUser();
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ssharedPreferences.edit().putString(SEL_YEAR, "2éme année").apply();
-                if(user==null) {
-                    Intent intent = new Intent(YearActivity.this, ConsultCreateActivity.class);
-                    startActivity(intent);
-                }
-                else{
-                    Intent intent = new Intent(YearActivity.this, SecondweekActivity.class);
-                    startActivity(intent);
+        if(user!= null && user.getLevel()==2){
+            button2.setVisibility(View.GONE);
+        }
+        if(user!= null && user.getLevel()==3){
+            button1.setVisibility(View.GONE);
+            button2.setGravity(Gravity.CENTER);
+        }
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ssharedPreferences.edit().putString(SEL_YEAR, "2éme année").apply();
+                    if (user == null) {
+                        Intent intent = new Intent(YearActivity.this, ConsultCreateActivity.class);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(YearActivity.this, SecondweekActivity.class);
+                        startActivity(intent);
 
+                    }
                 }
-            }
-        });
+            });
+
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

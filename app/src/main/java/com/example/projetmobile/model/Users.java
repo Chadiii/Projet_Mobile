@@ -105,4 +105,8 @@ public class Users implements Serializable {
     public String displayName(){
         return this.getPrenom()+" "+this.getNom();
     }
+
+    public int getLevel() { return level; }
+
+    public void setLevel(int level) { this.level = level; }
 }
