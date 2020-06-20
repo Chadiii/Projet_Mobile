@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.projetmobile.R;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +31,8 @@ public class View_PDF_Files extends AppCompatActivity {
     ListView myPDfListView;
     DatabaseReference databaseReference;
     List<uploadPDF> uploadPDFS;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,8 @@ public class View_PDF_Files extends AppCompatActivity {
         uploadPDFS = new ArrayList<>();
 
         viewAllFiles();
+        setupUIViews();
+        initToolbar();
 
         myPDfListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -117,5 +123,27 @@ public class View_PDF_Files extends AppCompatActivity {
 
     }
 
+
+    private void setupUIViews() {
+        toolbar = (Toolbar) findViewById(R.id.Toolbardata);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DATACENTRE I.W.I.M");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home : {
+                onBackPressed();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

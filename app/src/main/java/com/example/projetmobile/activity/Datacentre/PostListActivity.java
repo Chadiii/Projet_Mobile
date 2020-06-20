@@ -1,8 +1,10 @@
 package com.example.projetmobile.activity.Datacentre;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,11 +16,15 @@ public class PostListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private PostAdapter adapter;
+    private Toolbar toolbar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_list);
+        setupUIViews();
+        initToolbar();
 
         recyclerView = findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -45,5 +51,27 @@ public class PostListActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+    private void setupUIViews() {
+        toolbar = (Toolbar) findViewById(R.id.Toolbarpost);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DATACENTRE I.W.I.M");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home : {
+                onBackPressed();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -44,6 +44,10 @@
         <activity android:name=".activity.Datacentre.CoursChefFilere" />
         <activity android:name=".activity.Datacentre.PostListActivity" />
         <activity android:name=".activity.Datacentre.AddPostActivity" />
+        <activity android:name=".activity.authentication.IntroActivity" />
+
+
+>>>>>>> Stashed changes
         <activity android:name=".activity.aboutUs.About" />
         <activity android:name=".MainActivity">
             <intent-filter>

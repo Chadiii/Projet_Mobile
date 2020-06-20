@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.projetmobile.R;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,6 +30,8 @@ public class CoursChefFilere extends AppCompatActivity {
 
     EditText editPDFName;
     Button btn_upload;
+    private Toolbar toolbar;
+
 
     StorageReference storageReference;
     DatabaseReference databaseReference;
@@ -36,6 +40,8 @@ public class CoursChefFilere extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf1);
+        setupUIViews();
+        initToolbar();
 
         editPDFName = (EditText)findViewById(R.id.txt_pdfName);
         btn_upload = (Button)findViewById(R.id.btn_upload);
@@ -147,6 +153,30 @@ public class CoursChefFilere extends AppCompatActivity {
     public void btn_action1(View view) {
         startActivity(new Intent(getApplicationContext(), PostListActivity.class));
     }
+
+    private void setupUIViews() {
+        toolbar = (Toolbar) findViewById(R.id.Toolbardatacentre1);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DATACENTRE I.W.I.M");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home : {
+                onBackPressed();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
 
 
