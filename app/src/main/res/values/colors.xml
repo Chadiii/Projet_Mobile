@@ -10,6 +10,7 @@
     <color name="black">#03224C</color>
     <color name="bbb">#0099cc</color>
     <color name="red">#cc0000</color>
+    <color name="colorDeepGray">#747474</color>
 
 
     <string-array name="colors" translatable="false">
@@ -30,5 +31,6 @@
         <item>#ffbb33</item>
         <item>#cccccc</item>
         <item>#888888</item>
+
     </string-array>
 </resources>

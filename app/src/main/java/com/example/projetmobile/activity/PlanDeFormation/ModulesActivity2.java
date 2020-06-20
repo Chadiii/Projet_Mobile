@@ -1,10 +1,12 @@
 package com.example.projetmobile.activity.PlanDeFormation;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +27,7 @@ public class ModulesActivity2 extends AppCompatActivity {
     private ModulesAdapter2 adapter;
     private List<Module> productList;
     private ProgressBar progressBar;
+    private Toolbar toolbar;
 
 
     private FirebaseFirestore db;
@@ -33,6 +36,8 @@ public class ModulesActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modules);
+        setupUIViews();
+        initToolbar();
 
         progressBar = findViewById(R.id.progressbar);
 
@@ -78,6 +83,27 @@ public class ModulesActivity2 extends AppCompatActivity {
 
     }
 
+    private void setupUIViews() {
+        toolbar = (Toolbar) findViewById(R.id.Toolbarmodule);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Plan de formation I.W.I.M");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home : {
+                onBackPressed();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
 }

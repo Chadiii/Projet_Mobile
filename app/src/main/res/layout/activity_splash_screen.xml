@@ -11,6 +11,29 @@
         android:layout_centerInParent="true"
         android:src="@drawable/applogo" />
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/ens">
+
+
+    </ImageView>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/um">
+
+
+    </ImageView>
+
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

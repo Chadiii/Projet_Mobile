@@ -6,6 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,6 +28,8 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
     private EditText editTextCode;
     private EditText editTextIntitule;
     private EditText editTextVolume;
+    private Toolbar toolbar;
+
 
     private FirebaseFirestore db;
 
@@ -35,6 +40,9 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_module);
+
+        setupUIViews();
+        initToolbar();
 
         module = (Module) getIntent().getSerializableExtra("module");
         db = FirebaseFirestore.getInstance();
@@ -160,5 +168,27 @@ public class UpdateModuleActivity extends AppCompatActivity implements View.OnCl
 
                 break;
         }
+    }
+
+    private void setupUIViews() {
+        toolbar = (Toolbar) findViewById(R.id.Toolbarupdate);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Plan de formation I.W.I.M");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home : {
+                onBackPressed();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

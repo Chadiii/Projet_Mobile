@@ -2,12 +2,14 @@ package com.example.projetmobile.activity.PlanDeFormation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.projetmobile.R;
 import com.example.projetmobile.model.Module;
@@ -25,6 +27,8 @@ public class MainActivity1 extends AppCompatActivity implements View.OnClickList
     private EditText editTextCode;
     private EditText editTextIntitule;
     private EditText editTextVolume;
+    private Toolbar toolbar;
+
 
     private FirebaseFirestore db;
 
@@ -32,6 +36,8 @@ public class MainActivity1 extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main1);
+        setupUIViews();
+        initToolbar();
 
         db = FirebaseFirestore.getInstance();
 
@@ -121,4 +127,27 @@ public class MainActivity1 extends AppCompatActivity implements View.OnClickList
         }
 
     }
+
+    private void setupUIViews() {
+        toolbar = (Toolbar) findViewById(R.id.Toolbarmodule);
+
+    }
+
+    private void initToolbar(){
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Plan de formation I.W.I.M");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home : {
+                onBackPressed();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }

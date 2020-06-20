@@ -30,4 +30,19 @@
         <item> Samedi </item>
     </string-array>
 
+    //intro
+    <string name="intro_details"> Web and Mobile developer\n
+    </string>
+    <string name="intro_contacts">Bienvenue sur Application Mobile de gestion de la filière IWIM</string>
+    <string name="intro_blood_donation1">Yassine ATMANI</string>
+    <string name="intro_blood_donation2">Arnaud YARGA</string>
+    <string name="intro_blood_donation3">Zakarya ZAITAR</string>
+    <string name="intro_blood_donation4">Chadi LAOULAOU</string>
+    <string name="intro_blood_donation5">Hiba EL MANNANI</string>
+    <string name="intro_blood_donation6">Lokmane RAMDANI</string>
+
+
+    <string name="intro_find_location">Zakarya ZAITAR</string>
+
+
 </resources>
