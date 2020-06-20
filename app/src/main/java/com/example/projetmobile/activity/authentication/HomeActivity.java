@@ -156,6 +156,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         View headerView = navigationView.getHeaderView(0);
         TextView userName = headerView.findViewById(R.id.user_profile_name);
         if(user != null && userName != null) userName.setText(user.displayName()+"\n("+user.getRole()+")");
+        if(user != null && userName != null && user.getLevel()!=0)
+            userName.setText(user.displayName()+"\n("+user.getRole()+" "+user.getLevel()+"°année)");
     }
 
 
