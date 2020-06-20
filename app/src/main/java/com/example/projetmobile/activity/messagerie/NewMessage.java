@@ -35,6 +35,7 @@ public class NewMessage extends AppCompatActivity {
 
         Intent i = getIntent();
         final Message message = (Message)i.getSerializableExtra("message");
+        final String receptorFromProfile = (String) i.getSerializableExtra("receptor");
 
         // ce n'et pas un nouveau message mais une reponse à un message recu
         if(message != null) {
@@ -42,6 +43,10 @@ public class NewMessage extends AppCompatActivity {
             receptor.setText(message.sender);
             EditText object = findViewById(R.id.object);
             object.setText("Réponse: " + message.object);
+        }
+        else if(receptorFromProfile != null){
+            EditText receptor = findViewById(R.id.receptor);
+            receptor.setText(receptorFromProfile);
         }
 
         Button buttonEnvoyer = findViewById(R.id.button_send);

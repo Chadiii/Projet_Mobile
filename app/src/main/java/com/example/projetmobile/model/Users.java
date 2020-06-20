@@ -46,16 +46,19 @@ public class Users implements Serializable {
         Users.currentUser = currentUser;
     }
 
-    public String getType() {
+   /* public String getType() {
         return type;
     }
 
     public void setType(String type) {
         this.type = type;
-    }
+    }*/
 
     public String getEmail() {
         return email;
+    }
+    public String getTelephone() {
+        return telephone;
     }
 
     public void setEmail(String email) {

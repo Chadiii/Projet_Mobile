@@ -22,7 +22,7 @@ import com.example.projetmobile.activity.evenement.Event;
 import com.example.projetmobile.activity.messagerie.MessagerieHome;
 import com.example.projetmobile.activity.pedagogie.Absence;
 import com.example.projetmobile.activity.post.PostFragment;
-import com.example.projetmobile.activity.users.SettingsActivity;
+import com.example.projetmobile.activity.users.ProfilActivity;
 import com.example.projetmobile.model.Users;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -155,7 +155,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //Set user name in drawer header
         View headerView = navigationView.getHeaderView(0);
         TextView userName = headerView.findViewById(R.id.user_profile_name);
-        if(user != null && userName != null) userName.setText(user.displayName()+"\n("+user.getRole()+")");
+        if(user != null && userName != null) userName.setText(user.displayName());
     }
 
 
@@ -197,7 +197,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
     private void showSettingPage(){
-        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), ProfilActivity.class);
+        intent.putExtra("userMail", Users.getCurrentUser().getEmail());
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }

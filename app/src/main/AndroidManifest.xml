@@ -25,7 +25,7 @@
         <activity android:name=".activity.pedagogie.Absence" />
         <activity android:name=".activity.evenement.Event" />
         <activity android:name=".activity.messagerie.MessagerieHome" />
-        <activity android:name=".activity.users.SettingsActivity" />
+        <activity android:name=".activity.users.ProfilActivity" />
         <activity android:name=".activity.authentication.HomeActivity" />
         <activity android:name=".activity.authentication.RegisterActivity" />
         <activity android:name=".activity.authentication.LoginActivity" />

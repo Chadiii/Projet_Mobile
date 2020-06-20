@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.users.ProfilActivity"
+    android:gravity="center"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/profile_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTintMode="multiply"
+            android:indeterminateTint="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_empty_box_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/profile_empty_box_text"
+            android:layout_width="wrap_content"
+            android:text="vide"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"/>
+        <ImageView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/empty_box" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/profile_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/settings_profile_image"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:src="@drawable/profile"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            />
+
+        <Button
+            android:id="@+id/profile_image_change_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Changer la photo"
+            android:background="@drawable/buttons"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:gravity="center" />
+
+            <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="20dp">
+
+                <TableRow
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:text="Nom :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_column="1" />
+
+                    <TextView
+                        android:id="@+id/profile_nom"
+                        android:text="MonNom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_column="1" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:text="Prénom :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_column="1" />
+
+                    <TextView
+                        android:id="@+id/profile_prenom"
+                        android:text="MonPreNom"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_column="1" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:text="Email :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_column="1" />
+
+                    <TextView
+                        android:id="@+id/profile_email"
+                        android:text="MonEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_column="1" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:text="Téléphone :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_column="1" />
+
+                    <TextView
+                        android:id="@+id/profile_tel"
+                        android:text="Montel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_column="1" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:text="Role :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_column="1" />
+
+                    <TextView
+                        android:id="@+id/profile_role"
+                        android:text="MonRole"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_column="1" />
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/profile_level_row"
+                    android:layout_marginVertical="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <TextView
+                        android:text="Niveau :"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_column="1" />
+
+                    <TextView
+                        android:id="@+id/profile_level"
+                        android:text="MonNiveau"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFF"
+                        android:textStyle="bold"
+                        android:textSize="20dp"
+                        android:layout_column="1" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+                    <Button
+                        android:id="@+id/profile_button_new_message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingHorizontal="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Envoyer un message"
+                        android:background="@drawable/border_shadow"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:textAllCaps="false"
+                        android:visibility="gone"
+                        android:layout_column="2" />
+                </TableRow>
+
+
+            </TableLayout>
+    </LinearLayout>
+
+</LinearLayout>
