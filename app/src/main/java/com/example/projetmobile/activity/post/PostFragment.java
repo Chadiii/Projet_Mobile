@@ -47,7 +47,7 @@ public class PostFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_welcome, null);
+        ViewGroup root = (ViewGroup) inflater.inflate(R.layout.fragment_post, null);
 
 
         progressBar = root.findViewById(R.id.post_list_progress_bar);
@@ -86,7 +86,7 @@ public class PostFragment extends Fragment {
         Users currentUser = Users.getCurrentUser();
         if(currentUser.getRole().compareTo("Elève")==0){
             userGroup = "toStudent"+currentUser.level;
-            this.newPostButton.setVisibility(View.GONE);
+            //this.newPostButton.setVisibility(View.GONE);
         }
 
         db.collection("Posts")

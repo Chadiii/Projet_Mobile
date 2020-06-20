@@ -9,22 +9,7 @@
     app:layoutManager="LinearLayoutManager">
 
 
-    <LinearLayout
-        android:id="@+id/post_list_progress_bar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="visible">
 
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/colorPrimaryDark"
-            android:indeterminateTintMode="multiply" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/post_empty_box_group"
@@ -100,5 +85,21 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/post_list_progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimaryDark"
+            android:indeterminateTintMode="multiply" />
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

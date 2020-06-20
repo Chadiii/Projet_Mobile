@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,18 @@ public class NewPostActivity extends AppCompatActivity {
         newPostToStudent3 = findViewById(R.id.new_post_toStudent3);
         newPostButton = findViewById(R.id.new_post_button);
 
+        if(Users.getCurrentUser().getRole().compareTo("Elève")==0){
+            LinearLayout visibilityGroup = findViewById(R.id.new_post_visibility_group);
+            newPostToTeacher.setChecked(false);
+            newPostToStudent1.setChecked(false);
+            newPostToStudent2.setChecked(false);
+            newPostToStudent3.setChecked(false);
+            if(Users.getCurrentUser().level==1) newPostToStudent1.setChecked(true);
+            else if(Users.getCurrentUser().level==2) newPostToStudent2.setChecked(true);
+            else if(Users.getCurrentUser().level==3) newPostToStudent3.setChecked(true);
+            visibilityGroup.setVisibility(View.GONE);
+        }
+
         newPostButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,8 +76,7 @@ public class NewPostActivity extends AppCompatActivity {
                 else{
                     /*Snackbar.make(view, "Le message a bien été envoyé", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();*/
-                    sendPost(content, toTeacher, toStudent1, toStudent2, toStudent3);
-
+                    NewPostActivity.sendPost(Users.getCurrentUser().displayName(), content, toTeacher, toStudent1, toStudent2, toStudent3);
                     Toast.makeText(getApplicationContext(),"Le post a bien été envoyé",Toast.LENGTH_LONG).show();
                     finish();
                 }
@@ -72,8 +84,7 @@ public class NewPostActivity extends AppCompatActivity {
         });
     }
 
-    public boolean sendPost(String content, Boolean toTeacher, Boolean toStudent1, Boolean toStudent2, Boolean toStudent3){
-        boolean res = true;
+    public static void sendPost(String userName, String content, Boolean toTeacher, Boolean toStudent1, Boolean toStudent2, Boolean toStudent3){
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
@@ -83,7 +94,7 @@ public class NewPostActivity extends AppCompatActivity {
         Map<String, Object> postData = new HashMap<>();
         postData.put("content", content);
         postData.put("userMail",  Users.getCurrentUser().getEmail());
-        postData.put("user",  Users.getCurrentUser().displayName());
+        postData.put("user",  userName);
         postData.put("date", df.format(dateobj));
         postData.put("toTeacher", toTeacher);
         postData.put("toStudent1", toStudent1);
@@ -105,6 +116,22 @@ public class NewPostActivity extends AppCompatActivity {
                     }
                 });
 
-        return res;
+    }
+
+    public static void datacentreAsPost(String fileName){
+        String content = Users.getCurrentUser().displayName()+" a ajouté le fichier <"+fileName+"> dans le datacentre.";
+        Boolean toStudent1 = false, toStudent2 = false, toStudent3 = false;
+        if(Users.getCurrentUser().getRole().compareTo("Professeur")==0){
+            toStudent1 = true;
+            toStudent2 = true;
+            toStudent3 = true;
+        }
+        else{
+            if(Users.getCurrentUser().level==1) toStudent1 = true;
+            else if(Users.getCurrentUser().level==2) toStudent2 = true;
+            else if(Users.getCurrentUser().level==3) toStudent3 = true;
+        }
+        NewPostActivity.sendPost("Datacentre", content, false, toStudent1, toStudent2, toStudent3);
+
     }
 }
