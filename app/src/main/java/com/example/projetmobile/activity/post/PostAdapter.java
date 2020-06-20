@@ -3,6 +3,7 @@ package com.example.projetmobile.activity.post;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.Datacentre.View_PDF_Files;
+import com.example.projetmobile.activity.users.ProfilActivity;
 import com.example.projetmobile.model.Post;
 import com.example.projetmobile.model.Users;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -75,6 +78,20 @@ public class PostAdapter extends ArrayAdapter<Post> {
         date.setText(post.date);
         content.setText(post.content);
         visibility.setText(post.getVisibility());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                Intent intent;
+                if(post.user.compareTo("Datacentre")==0)
+                    intent =  new Intent(context, View_PDF_Files.class);
+                else{
+                    intent =  new Intent(context, ProfilActivity.class);
+                    intent.putExtra("userMail", post.userMail);
+                }
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

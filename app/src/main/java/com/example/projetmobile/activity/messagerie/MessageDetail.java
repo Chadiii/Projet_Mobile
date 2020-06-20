@@ -6,9 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.projetmobile.R;
+import com.example.projetmobile.activity.users.ProfilActivity;
 import com.example.projetmobile.model.Message;
 import com.example.projetmobile.model.Users;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -60,6 +62,22 @@ public class MessageDetail extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NewMessage.class);
                 intent.putExtra("message", message);
+                startActivity(intent);
+            }
+        });
+
+        Button senderProfil = findViewById(R.id.message_sender_profil_button);
+        senderProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View view) {
+                String targetedEmail;
+                if(message.sender.compareTo(Users.getCurrentUser().getEmail()) != 0) //message recus
+                    targetedEmail = message.sender;
+                else //message envoyé
+                    targetedEmail = (String) message.receivers.get("email");
+
+                Intent intent =  new Intent(getApplicationContext(), ProfilActivity.class);
+                intent.putExtra("userMail", targetedEmail);
                 startActivity(intent);
             }
         });
