@@ -53,10 +53,10 @@ public class IntroActivity extends AppCompatActivity {
 
         intro_content_list.add(new IntroContent("Bienvenue sur Application Mobile dédié à la filière IWIM", "Réalisé par:", R.drawable.applogo));
         intro_content_list.add(new IntroContent(intro_blood_donation2,intro_details, R.drawable.arnaud));
-        intro_content_list.add(new IntroContent(intro_blood_donation1,intro_details, R.drawable.yassinee));
+        intro_content_list.add(new IntroContent(intro_blood_donation1,intro_details, R.drawable.yass));
         intro_content_list.add(new IntroContent(intro_blood_donation3,intro_details, R.drawable.zakarya));
         intro_content_list.add(new IntroContent(intro_blood_donation4,intro_details, R.drawable.chaadi));
-        intro_content_list.add(new IntroContent(intro_blood_donation5,intro_details, R.drawable.git));
+        intro_content_list.add(new IntroContent(intro_blood_donation5,intro_details, R.drawable.hiba));
         intro_content_list.add(new IntroContent(intro_blood_donation6,intro_details, R.drawable.lokmane));
 
 

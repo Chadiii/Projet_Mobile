@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,6 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText InputPrenom, InputNom, InputPassword, InputConfirmPassword, InputEmail, InputTelephone;
     private ProgressDialog loadingBar;
     private RadioGroup radioGroupRole, radioGroupLevel;
+    String TAG = "TAG";
 
     private FirebaseAuth mAuth;
 
@@ -148,6 +150,20 @@ public class RegisterActivity extends AppCompatActivity {
                             userData.put("prenom", prenom);
                             userData.put("telephone", telephone);
                             userData.put("role", role);
+                            FirebaseUser fuser = mAuth.getCurrentUser();
+                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(RegisterActivity.this, "Verification Email Has been Sent.", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d(TAG, "onFailure: Email not sent " + e.getMessage());
+                                }
+                            });
+
+
                             if(level!=0) userData.put("level", level);
 
                             db.collection("Users").document(user.getUid())

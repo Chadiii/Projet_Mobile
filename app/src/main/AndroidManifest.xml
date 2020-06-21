@@ -50,6 +50,9 @@
         <activity android:name=".activity.Datacentre.AddPostActivity" />
         <activity android:name=".activity.authentication.IntroActivity" />
         <activity android:name=".activity.aboutUs.About" />
+        <activity android:name=".activity.authentication.PasswordActivity" />
+
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

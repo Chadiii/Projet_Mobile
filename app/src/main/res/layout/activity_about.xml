@@ -185,7 +185,7 @@
                         android:layout_height="135dp"
 
                         android:clickable="true"
-                        android:src="@drawable/yassinee" />
+                        android:src="@drawable/yass" />
 
 
                     <TextView
@@ -316,7 +316,7 @@
                         android:layout_height="130dp"
                         android:layout_marginLeft="19dp"
                         android:clickable="true"
-                        android:src="@drawable/linkedin" />
+                        android:src="@drawable/hiba" />
 
 
                     <TextView

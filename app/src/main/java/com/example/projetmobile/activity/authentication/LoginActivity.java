@@ -2,6 +2,8 @@ package com.example.projetmobile.activity.authentication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import android.widget.CheckBox;
+import io.paperdb.Paper;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -11,15 +13,19 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.projetmobile.MainActivity;
 import com.example.projetmobile.R;
 import com.example.projetmobile.model.Users;
+import com.example.projetmobile.prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,9 +36,13 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
     private Button loginButton;
+    private Button loginpasswordforgot;
     private ProgressDialog loadingBar;
     FirebaseFirestore db;
     private FirebaseAuth mAuth;
+    private CheckBox chkBoxRememberMe;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
         loginButton = (Button) findViewById(R.id.login_btn);
+        loginpasswordforgot = (Button) findViewById(R.id.forget_password_link);
+
         inputPassword = (EditText) findViewById(R.id.login_password_input);
         inputEmail = (EditText) findViewById(R.id.email_input);
 
@@ -52,6 +64,10 @@ public class LoginActivity extends AppCompatActivity {
             inputEmail.setText(receivedEmail);
 
         loadingBar = new ProgressDialog(this);
+        chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chbk);
+        Paper.init(this);
+
+
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +76,17 @@ public class LoginActivity extends AppCompatActivity {
                 LoginUser();
             }
         });
+
+        loginpasswordforgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LoginUser();
+                startActivity(new Intent(LoginActivity.this, PasswordActivity.class));
+
+            }
+        });
+
     }
 
     private void LoginUser() {
@@ -92,18 +119,35 @@ public class LoginActivity extends AppCompatActivity {
 
     private void AllowAccessToAccount(final String email, final String password) {
 
+
+        if(chkBoxRememberMe.isChecked())
+        {
+            Paper.book().write(Prevalent.UserLoginKey, email);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+
+        }
+
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+
         if (email.equals("chef@gmail.com") && password.equals("chef")) {
             Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();
             loadingBar.dismiss();
             Intent intent = new Intent(LoginActivity.this, ChefFiliereActivity.class);
             startActivity(intent);
+
+
         } else {
 
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
+                            FirebaseUser firebaseUser = mAuth.getInstance().getCurrentUser();
+                            final Boolean emailflag = firebaseUser.isEmailVerified();
+
+                            if (task.isSuccessful() && emailflag) {
                                 //get user data
                                 FirebaseUser user = mAuth.getCurrentUser();
                                 if (user != null) {
@@ -158,13 +202,19 @@ public class LoginActivity extends AppCompatActivity {
                             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);*/
                             } else {
-                                Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this, "Verify your E-MAIL or Register", Toast.LENGTH_SHORT).show();
                                 loadingBar.dismiss();
+
                             }
 
                         }
                     });
+
         }
+
+
+
+
     }
 }
 
