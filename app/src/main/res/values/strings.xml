@@ -44,5 +44,9 @@
 
     <string name="intro_find_location">Zakarya ZAITAR</string>
 
+    <string name="title_activity_profil_picture">ProfilPictureActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
 
 </resources>

@@ -26,6 +26,9 @@ import com.example.projetmobile.activity.users.ProfilActivity;
 import com.example.projetmobile.model.Users;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -70,8 +73,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     public void onResume()
     {
         super.onResume();
+        configureNavigationView();
         this.welcomeFragment = PostFragment.newInstance();
         refresh();
+
     }
 
     public void refresh(){
@@ -155,7 +160,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         //Set user name in drawer header
         View headerView = navigationView.getHeaderView(0);
         TextView userName = headerView.findViewById(R.id.user_profile_name);
-        if(user != null && userName != null) userName.setText(user.displayName());
+        CircleImageView imagePicture = headerView.findViewById(R.id.user_profile_image);
+        if(user != null && userName != null){
+            userName.setText(user.displayName());
+            if(Users.getCurrentUser().getPicture() != null)
+                Picasso.get()
+                        .load(Users.getCurrentUser().getPicture())
+                        .resize(70, 70)
+                        .centerCrop()
+                        .error(R.drawable.profile)
+                        .into(imagePicture);
+        }
     }
 
 

@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
         ////////////////////////////////////////// for test
         //email = "test@iwim.com"; password = "testtest";
-        //email = "ma@iwim.com"; password = "123456";
+        //email = "arnaud@iwim.com"; password = "123456";
         /////////////////////////////////////////
 
         if(TextUtils.isEmpty(password)){
@@ -116,11 +116,13 @@ public class LoginActivity extends AppCompatActivity {
                                                 if (document.exists()) {
                                                     Log.d("succ", "DocumentSnapshot data: " + document.getData());
                                                     Map<String, Object> userData = document.getData();
+                                                    String id = (String) document.getId();
                                                     String userEmail = (String) userData.get("email");
                                                     String userNom = (String) userData.get("nom");
                                                     String userPrenom = (String) userData.get("prenom");
                                                     String userPhone = (String) userData.get("telephone");
                                                     String role = (String) userData.get("role");
+                                                    String picture = (String) userData.get("picture");
                                                     int level;
                                                     if(role.compareTo("Professeur")==0) level = 0;
                                                     else{
@@ -129,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
                                                         if(level>3 || level<1) level = 1;
                                                     }
                                                     Log.d("data", userEmail+" "+userNom+" "+userPrenom+" "+userPhone+" "+level);
-                                                    Users currentUser = new Users(userEmail, userNom, userPrenom, userPhone, role, level);
+                                                    Users currentUser = new Users(id, userEmail, userNom, userPrenom, userPhone, role, level, picture);
                                                     Users.setCurrentUser(currentUser);
 
                                                     Toast.makeText(LoginActivity.this, "Logged in Successfully", Toast.LENGTH_SHORT).show();

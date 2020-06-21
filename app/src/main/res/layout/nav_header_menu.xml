@@ -21,9 +21,13 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/profile"
-        app:civ_border_width="2dp"
+        android:layout_marginTop="20dp"
+        app:civ_border_width="3dp"
         android:layout_gravity="center"
-        app:civ_border_color="@android:color/white"/>
+        android:background="@color/colorPrimaryDark"
+        app:civ_border_color="@color/white"
+        android:layout_centerHorizontal="true"
+        />
 
     <TextView
         android:id="@+id/user_profile_name"

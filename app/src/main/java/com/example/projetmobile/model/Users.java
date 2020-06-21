@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Users implements Serializable {
     private static Users currentUser;
 
-    private String email, login, nom, prenom, password, type, telephone, role;
+    private String id, email, login, nom, prenom, password, type, telephone, role, picture;
     public int level;
 
     public Users(){
@@ -20,13 +20,25 @@ public class Users implements Serializable {
         this.role = role;
     }
 
-    public Users(String email, String nom, String prenom, String telephone, String role, int level){
+    public Users(String email, String nom, String prenom, String telephone, String role, int level, String picture){
         this.email = email;
         this.telephone = telephone;
         this.nom = nom;
         this.prenom = prenom;
         this.role = role;
         this.level = level;
+        this.picture = picture;
+    }
+
+    public Users(String id, String email, String nom, String prenom, String telephone, String role, int level, String picture){
+        this.id = id;
+        this.email = email;
+        this.telephone = telephone;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.role = role;
+        this.level = level;
+        this.picture = picture;
     }
 
     /*public Users(String email, String login, String nom, String prenom, String password, String type) {
@@ -76,9 +88,20 @@ public class Users implements Serializable {
     public String getNom() {
         return nom;
     }
+    public String getId() {
+        return id;
+    }
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public String getPrenom() {

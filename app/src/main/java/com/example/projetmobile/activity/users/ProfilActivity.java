@@ -3,31 +3,33 @@ package com.example.projetmobile.activity.users;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.messagerie.NewMessage;
 import com.example.projetmobile.model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.StorageTask;
-
-import java.util.ArrayList;
-import java.util.Collections;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,8 +37,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class ProfilActivity extends AppCompatActivity {
-
-    private CircleImageView profileImageView;
+    private static final int PICK_IMAGE_REQUEST = 71;
     private Button changeProfileButton;
     private TableRow levelRow;
     private TextView userNom, userPrenom, userMail, userTel, userRole, userLevel;
@@ -44,6 +45,10 @@ public class ProfilActivity extends AppCompatActivity {
 
     private LinearLayout emptyGroup, progressBar, mainContent;
     private TextView emptyText;
+    private Uri filePath;
+
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,9 +91,18 @@ public class ProfilActivity extends AppCompatActivity {
             });
             searchUser(targetedUserMail);
         }
+
+        changeProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeProfilePicture();
+            }
+        });
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
     }
 
-    public void setDataOnView(Users user){
+    public void setDataOnView(final Users user){
         if(user==null) finish();
         userNom.setText(user.getNom());
         userPrenom.setText(user.getPrenom());
@@ -101,6 +115,26 @@ public class ProfilActivity extends AppCompatActivity {
             userLevel.setText(user.level+"A");
         if(user.getEmail().compareTo(Users.getCurrentUser().getEmail())!=0)
             changeProfileButton.setVisibility(View.GONE);
+
+        if(user.getPicture() != null)
+            Picasso.get()
+                    .load(user.getPicture())
+                    //.load("https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+                    .resize(130, 130)
+                    .centerCrop()
+                    .error(R.drawable.profile)
+                    .into((CircleImageView) findViewById(R.id.user_profile_picture_image));
+
+        ((CircleImageView) findViewById(R.id.user_profile_picture_image)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(user.getPicture() != null){
+                    Intent intent = new Intent(view.getContext(), ProfilPictureActivity.class);
+                    intent.putExtra("imageUrl", user.getPicture());
+                    startActivity(intent);
+                }
+            }
+        });
 
         mainContent.setVisibility(View.VISIBLE);
     }
@@ -122,6 +156,7 @@ public class ProfilActivity extends AppCompatActivity {
                                 String userPrenom = (String) userData.get("prenom");
                                 String userPhone = (String) userData.get("telephone");
                                 String role = (String) userData.get("role");
+                                String picture = (String) userData.get("picture");
                                 int level;
                                 if(role.compareTo("Professeur")==0) level = 0;
                                 else{
@@ -130,7 +165,7 @@ public class ProfilActivity extends AppCompatActivity {
                                     if(level>3 || level<1) level = 1;
                                 }
                                 Log.d("data", userEmail+" "+userNom+" "+userPrenom+" "+userPhone+" "+level);
-                                targetedUser = new Users(userEmail, userNom, userPrenom, userPhone, role, level);
+                                targetedUser = new Users(userEmail, userNom, userPrenom, userPhone, role, level, picture);
                             }
                             if(targetedUser == null){
                                 emptyText.setText("Cet utilisateur n'a pas été trouvé");
@@ -150,4 +185,75 @@ public class ProfilActivity extends AppCompatActivity {
                 });
     }
 
+    public void changeProfilePicture(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            filePath = data.getData();
+            if(filePath != null)
+            {
+                final ProgressDialog progressDialog = new ProgressDialog(this);
+                progressDialog.setTitle("Uploading...");
+                progressDialog.show();
+
+                final StorageReference ref = storageReference.child("profilePictures/"+ Users.getCurrentUser().getEmail()+"_picture");
+
+                ref.putFile(filePath)
+                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        Uri downloadUrl = uri;
+                                        Log.d("picture url",downloadUrl.toString());
+                                                //Do what you want with the url
+                                        setNewPictureUrl(downloadUrl.toString());
+                                    }
+                                });
+                                progressDialog.dismiss();
+                                Toast.makeText(ProfilActivity.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(ProfilActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                                double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                        .getTotalByteCount());
+                                progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            }
+                        });
+            }
+        }
+    }
+
+    public void setNewPictureUrl(String url){
+        Users.getCurrentUser().setPicture(url);
+        Picasso.get()
+                .load(url)
+                .resize(130, 130)
+                .centerCrop()
+                .error(R.drawable.profile)
+                .into((CircleImageView) findViewById(R.id.user_profile_picture_image));
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Users").document(Users.getCurrentUser().getId()).update("picture",url);
+
+    }
 }

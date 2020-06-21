@@ -33,4 +33,6 @@
         <item>#888888</item>
 
     </string-array>
+
+    <color name="black_overlay">#66000000</color>
 </resources>
