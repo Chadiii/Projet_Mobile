@@ -30,10 +30,6 @@
                 android:id="@+id/nav_datacentre"
                 android:icon="@drawable/ic_library_books_black_24dp"
                 android:title="Datacentre I.W.I.M" />
-            <item
-                android:id="@+id/nav_note"
-                android:icon="@drawable/ic_library_books_black_24dp"
-                android:title="Absence" />
 
             <item
                 android:id="@+id/nav_settings"

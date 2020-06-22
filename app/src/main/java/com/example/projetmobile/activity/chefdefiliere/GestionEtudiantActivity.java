@@ -82,22 +82,22 @@ public class GestionEtudiantActivity extends AppCompatActivity {
                 String confirmPassword = confirmProfesseurPassword.getText().toString();
 
                 if(TextUtils.isEmpty(email)){
-                    Toast.makeText(GestionEtudiantActivity.this, "Please write your email ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionEtudiantActivity.this, "Please write his email ...", Toast.LENGTH_SHORT).show();
                 }
                 else if(TextUtils.isEmpty(nom)){
-                    Toast.makeText(GestionEtudiantActivity.this, "Please write your nom ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionEtudiantActivity.this, "Please write his nom ...", Toast.LENGTH_SHORT).show();
                 }
                 else if(TextUtils.isEmpty(prenom)){
-                    Toast.makeText(GestionEtudiantActivity.this, "Please write your prenom ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionEtudiantActivity.this, "Please write his prenom ...", Toast.LENGTH_SHORT).show();
                 }
                 else if(TextUtils.isEmpty(telephone)){
-                    Toast.makeText(GestionEtudiantActivity.this, "Please write your phone number ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionEtudiantActivity.this, "Please write his phone number ...", Toast.LENGTH_SHORT).show();
                 }
                 else if(TextUtils.isEmpty(password)){
-                    Toast.makeText(GestionEtudiantActivity.this, "Please write your password ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionEtudiantActivity.this, "Please write his password ...", Toast.LENGTH_SHORT).show();
                 }
                 else if(TextUtils.isEmpty(confirmPassword)){
-                    Toast.makeText(GestionEtudiantActivity.this, "Please confirm your password ...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionEtudiantActivity.this, "Please confirm his password ...", Toast.LENGTH_SHORT).show();
                 }
                 else if(confirmPassword.compareTo(password) != 0){
                     Toast.makeText(GestionEtudiantActivity.this, "Your password does not match ...", Toast.LENGTH_SHORT).show();

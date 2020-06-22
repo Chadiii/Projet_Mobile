@@ -106,9 +106,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_datacentre :
                 this.showDatacentrePage();
                 break;
-            case R.id.nav_note :
-                this.showNotePage();
-                break;
             case R.id.nav_settings :
                 this.showSettingPage();
                 break;
@@ -203,11 +200,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     }
     private void showDatacentrePage(){
         Intent intent = new Intent(getApplicationContext(), Cours.class);
-        startActivity(intent);
-        this.navigationView.getMenu().getItem(0).setChecked(true);
-    }
-    private void showNotePage(){
-        Intent intent = new Intent(getApplicationContext(), Absence.class);
         startActivity(intent);
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }

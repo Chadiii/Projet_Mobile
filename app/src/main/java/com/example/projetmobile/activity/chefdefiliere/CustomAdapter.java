@@ -44,50 +44,10 @@ public class CustomAdapter extends RecyclerView.Adapter<ViewHolder> {
         viewHolder.setOnClickListener(new ViewHolder.ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                // this will be called it user click item
-
-                // show data in toast on clicking
-                String nom = modelList.get(position).getNom();
-                String prenom = modelList.get(position).getPrenom();
-                String telephone = modelList.get(position).getTelephone();
-
-                Toast.makeText(ListProfesseurActivity, nom + "\n" + prenom + "\n" + telephone , Toast.LENGTH_SHORT).show();
-
             }
 
             @Override
             public void onItemLongClick(View view, final int position) {
-                // this will be called it user long click item
-                AlertDialog.Builder builder = new AlertDialog.Builder(ListProfesseurActivity);
-
-                String[] options = {"Update", "Delete"};
-                builder.setItems(options, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        if(which == 0){
-                            // update is clicked
-                            String email1 = modelList.get(position).getEmail1();
-                            String nom = modelList.get(position).getNom();
-                            String prenom = modelList.get(position).getPrenom();
-                            String telephone = modelList.get(position).getTelephone();
-
-                            // intent to start activity
-                            Intent intent = new Intent(ListProfesseurActivity, GestionProfesseurActivity.class);
-                            // put data in intent
-                            intent.putExtra("pEmail", email1);
-                            intent.putExtra("pNom", nom);
-                            intent.putExtra("pPrenom", prenom);
-                            intent.putExtra("pTelephone", telephone);
-
-                            // start activity
-                            ListProfesseurActivity.startActivity(intent);
-
-                        }
-                        if(which == 1){
-                            // delete is clicked
-                        }
-                    }
-                }).create().show();
             }
         });
 
