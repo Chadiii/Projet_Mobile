@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -150,18 +151,29 @@ public class GestionProfesseurActivity extends AppCompatActivity {
                             userData.put("telephone", telephone);
                             userData.put("role", "Professeur");
 
+                            FirebaseUser fuser = mAuth.getCurrentUser();
+                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(GestionProfesseurActivity.this, "Verification Email Has been sent to the professeur.", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
+                                }
+                            });
+
                             db.collection("Users").document(user.getUid())
                                     .set(userData)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            //Log.d(TAG, "DocumentSnapshot successfully written!");
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            //Log.w(TAG, "Error writing document", e);
+                                        public void onFailure(@NonNull Exception e){
                                         }
                                     });
 
