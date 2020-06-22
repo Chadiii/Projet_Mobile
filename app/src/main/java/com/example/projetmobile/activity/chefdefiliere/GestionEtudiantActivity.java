@@ -7,13 +7,16 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.authentication.ChefFiliereActivity;
+import com.example.projetmobile.activity.authentication.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -32,6 +35,8 @@ public class GestionEtudiantActivity extends AppCompatActivity {
     private Button validerProfesseurBtn, listPtofesseurBtn;
 
     String pEmail, pNom, pPrenom, pTelephone;
+
+    private RadioGroup radioGroupLevel;
 
     ProgressDialog loadingBar;
 
@@ -52,6 +57,8 @@ public class GestionEtudiantActivity extends AppCompatActivity {
         confirmProfesseurPassword = findViewById(R.id.confpasswordPro);
         validerProfesseurBtn = findViewById(R.id.validButProf);
         listPtofesseurBtn = findViewById(R.id.listButProf);
+        radioGroupLevel = findViewById(R.id.gestion_student_level_buttonGroup);
+
 
         /*Bundle bundle = getIntent().getExtras();
         if(bundle != null){
@@ -81,6 +88,15 @@ public class GestionEtudiantActivity extends AppCompatActivity {
                 String password = passwordProfesseur.getText().toString();
                 String confirmPassword = confirmProfesseurPassword.getText().toString();
 
+                int level = 0;
+                if(radioGroupLevel.getCheckedRadioButtonId()==R.id.gestion_student_level_1){
+                    level = 1;
+                }
+                else if(radioGroupLevel.getCheckedRadioButtonId()==R.id.gestion_student_level_2){
+                    level = 2;
+                }
+                else level = 3;
+
                 if(TextUtils.isEmpty(email)){
                     Toast.makeText(GestionEtudiantActivity.this, "Please write his email ...", Toast.LENGTH_SHORT).show();
                 }
@@ -108,7 +124,7 @@ public class GestionEtudiantActivity extends AppCompatActivity {
                     loadingBar.setCanceledOnTouchOutside(false);
                     loadingBar.show();
 
-                    ValidateLogin(email, nom, prenom, telephone, password);
+                    ValidateLogin(email, nom, prenom, telephone, password, level);
                 }
             }
         });
@@ -123,7 +139,7 @@ public class GestionEtudiantActivity extends AppCompatActivity {
 
     }
 
-    private void ValidateLogin(final String email, final String nom, final String prenom, final String telephone, final String password) {
+    private void ValidateLogin(final String email, final String nom, final String prenom, final String telephone, final String password, final int level) {
 
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -141,23 +157,38 @@ public class GestionEtudiantActivity extends AppCompatActivity {
                             userData.put("prenom", prenom);
                             userData.put("telephone", telephone);
                             userData.put("role", "Elève");
+                            FirebaseUser fuser = mAuth.getCurrentUser();
+                            fuser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(GestionEtudiantActivity.this, "Verification Email Has been sent to the student.", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.d("TAG", "onFailure: Email not sent " + e.getMessage());
+                                }
+                            });
+
+                            if(level!=0) userData.put("level", level);
+
 
                             db.collection("Users").document(user.getUid())
                                     .set(userData)
                                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override
                                         public void onSuccess(Void aVoid) {
-                                            //Log.d(TAG, "DocumentSnapshot successfully written!");
+
                                         }
                                     })
                                     .addOnFailureListener(new OnFailureListener() {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
-                                            //Log.w(TAG, "Error writing document", e);
+
                                         }
                                     });
 
-                            Toast.makeText(GestionEtudiantActivity.this, "Congratulations, this account has been created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(GestionEtudiantActivity.this, "Congratulations, this account has been created, he need to verify his account", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
 
                             Intent intent = new Intent( GestionEtudiantActivity.this, ChefFiliereActivity.class);

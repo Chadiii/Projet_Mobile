@@ -108,27 +108,29 @@
         android:id="@+id/validButProf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/gestion_student_level_buttonGroup"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_below="@id/confpasswordPro"
-        android:layout_marginTop="30dp"
         android:background="@drawable/buttons"
+        android:text="Valider les modifications"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:text="Valider les modifications" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/listButProf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/validButProf"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/buttons"
-        android:layout_below="@id/validButProf"
-        android:layout_marginTop="20dp"
+        android:text="Consulter la Liste des Etudiants"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:text="Consulter la Liste des Etudiants" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView2"
@@ -141,6 +143,54 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:text="Modifier un Etudiant" />
+
+    <RadioGroup
+        android:id="@+id/gestion_student_level_buttonGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/confpasswordPro"
+        android:background="@drawable/input_design"
+        android:padding="10dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
+
+        <RadioButton
+            android:id="@+id/gestion_student_level_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:buttonTint="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:checked="true"
+            android:text="1A" />
+
+        <RadioButton
+            android:id="@+id/gestion_student_level_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:buttonTint="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="2A" />
+
+        <RadioButton
+            android:id="@+id/gestion_student_level_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:textColor="@color/colorPrimaryDark"
+            android:buttonTint="@color/colorPrimaryDark"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="3A" />
+
+    </RadioGroup>
 
 
 </RelativeLayout>
