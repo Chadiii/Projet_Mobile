@@ -7,11 +7,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.projetmobile.R;
 import com.example.projetmobile.activity.Datacentre.Cours;
@@ -37,6 +40,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Users user;
+    private Menu menu;
 
 
     private Fragment welcomeFragment;
@@ -47,7 +51,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_home);
 
         user = Users.getCurrentUser();
-
 
         //Configure all views
         this.configureToolBar();
@@ -83,7 +86,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         this.startTransactionFragment(this.welcomeFragment);
     }
 
-
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
 
@@ -105,6 +107,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_datacentre :
                 this.showDatacentrePage();
+                break;
+            case R.id.nav_note :
+                this.showNotePage();
                 break;
             case R.id.nav_settings :
                 this.showSettingPage();
@@ -201,6 +206,17 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     private void showDatacentrePage(){
         Intent intent = new Intent(getApplicationContext(), Cours.class);
         startActivity(intent);
+        this.navigationView.getMenu().getItem(0).setChecked(true);
+    }
+    private void showNotePage(){
+
+        if(user.getRole().compareTo("Elève")==0) {
+            Toast.makeText(this, "Icon reserve aux professeurs", Toast.LENGTH_SHORT).show();
+        }else {
+        Intent intent = new Intent(getApplicationContext(), Absence.class);
+        startActivity(intent);
+        }
+
         this.navigationView.getMenu().getItem(0).setChecked(true);
     }
     private void showSettingPage(){
