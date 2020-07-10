@@ -95,8 +95,7 @@ public class LoginActivity extends AppCompatActivity {
         String password = inputPassword.getText().toString();
 
         ////////////////////////////////////////// for test
-        //email = "test@iwim.com"; password = "testtest";
-        //email = "arnaud@iwim.com"; password = "123456";
+        //email = "nawemap603@winemails.com"; password = "passpass";
         /////////////////////////////////////////
 
         if(TextUtils.isEmpty(password)){
